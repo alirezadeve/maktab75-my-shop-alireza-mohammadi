@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "assets/styles/components/Input/index.scss";
 
-export const Input = ({type, holder, onChnage, value}) => {
+export const Input = ({ type, holder, onChnage, value }) => {
   return (
     <input
       className="input"
@@ -12,11 +12,11 @@ export const Input = ({type, holder, onChnage, value}) => {
       required
     />
   );
-}
+};
 
 Input.prototype = {
   type: PropTypes.string.isRequired,
   holder: PropTypes.string.isRequired,
   onChnage: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
-}
+  value: PropTypes.string.isRequired,
+};

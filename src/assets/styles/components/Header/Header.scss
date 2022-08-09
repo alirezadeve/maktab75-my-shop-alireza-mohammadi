@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  padding: 25px 20px 10px 20px;
+  // border-bottom: 3px solid red;
+  margin-bottom: 10px;
+  position: relative;
+}
+.header::after {
+  background: rgba(0, 0, 0, 0.228);
+  content: "";
+  position: absolute;
+  width: 1496px;
+  height: 1px;
+  bottom: 0px;
+  top: 88px;
+}

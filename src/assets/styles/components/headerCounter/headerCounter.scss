@@ -1,0 +1,18 @@
+.headerCounterBox {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+  }
+  div:hover {
+    cursor: pointer;
+  }
+}
