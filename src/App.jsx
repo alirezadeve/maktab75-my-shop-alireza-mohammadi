@@ -11,6 +11,7 @@ import {
   Slider,
   Login,
   Aside,
+  PhonNumber,
 } from "components";
 // import { HelperTextMisaligned } from "./Pages";
 import { useState } from "react";
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <Aside>anmsikodfh</Aside>
+      <Aside></Aside>
       <header className="header">
         <HeaderCounter className="headerCounterBox" />
 

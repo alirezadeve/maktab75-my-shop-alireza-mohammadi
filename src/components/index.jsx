@@ -12,3 +12,4 @@ export { default as Slider } from "./Slider/slider";
 // export { default as HelperTextMisaligned } from "./Input/LoginInput";
 export { default as Login } from "./Login/login";
 export { default as Aside } from "./Aside/Aside";
+export { default as PhonNumber } from "./PhonNumber/PhonNumber";

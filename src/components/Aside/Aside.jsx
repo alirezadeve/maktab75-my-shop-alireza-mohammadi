@@ -1,20 +1,11 @@
 import React from "react";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import InsertLinkOutlinedIcon from "@mui/icons-material/InsertLinkOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import WhatsappOutlinedIcon from "@mui/icons-material/WhatsappOutlined";
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import Tooltip from "@mui/material/Tooltip";
-
-import {
-  Grid,
-  Paper,
-  Avatar,
-  TextField,
-  Button,
-  Typography,
-  Link,
-  Checkbox,
-} from "@mui/material";
+import { Grid, Paper, Avatar, Typography } from "@mui/material";
 const box = {
   padding: 20,
   height: "50px",
@@ -22,6 +13,7 @@ const box = {
   margin: "8px auto",
   backgroundColor: "gray",
   display: "flex",
+  justifyContent: "space-between",
   alignItems: "center",
 };
 const tooltip = {
@@ -29,7 +21,7 @@ const tooltip = {
   fontSize: "50px",
 };
 const avatarStyle = {
-  fontSize: "large",
+  fontSize: "20px",
   cursor: "pointer",
 };
 const flex = {
@@ -37,6 +29,18 @@ const flex = {
   display: "flex",
   justifyContent: "space-around",
   alignItems: "center",
+};
+const phon = {
+  width: "14%",
+  display: "flex",
+  alignIitems: "center",
+  justifyContent: "space-between",
+  // padding: "0px 30px",
+  paddingLeft: "50px",
+};
+const phonN = {
+  fontSize: "15px",
+  marginLeft: "10px",
 };
 const Aside = () => {
   return (
@@ -56,17 +60,19 @@ const Aside = () => {
 
         <Tooltip title="Facebook" placement="bottom">
           <Avatar style={avatarStyle}>
-            <InsertLinkOutlinedIcon />
+            <WhatsappOutlinedIcon />
           </Avatar>
         </Tooltip>
 
         <Tooltip title="Facebook" placement="bottom">
           <Avatar style={avatarStyle}>
-            <WhatsappOutlinedIcon />
+            <AccountCircleOutlinedIcon />
           </Avatar>
         </Tooltip>
-
-        {/* <h2> Sign In</h2> */}
+      </Grid>
+      <Grid style={phon}>
+        <Typography style={phonN}>9813564655465+</Typography>
+        <LocalPhoneOutlinedIcon style={avatarStyle} />
       </Grid>
     </Paper>
   );
