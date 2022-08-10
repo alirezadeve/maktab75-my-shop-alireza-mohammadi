@@ -10,12 +10,13 @@ import "./styles.css";
 
 // import required modules
 import { Navigation } from "swiper";
+import images from "../../images/5bb.jpg";
 
 export default function Slider() {
   return (
     <>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        <SwiperSlide>Slide 1</SwiperSlide>
+        <SwiperSlide>{images}</SwiperSlide>
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>

@@ -9,7 +9,9 @@ import {
   HeaderCounter,
   Menu,
   Slider,
+  Login,
 } from "components";
+// import { HelperTextMisaligned } from "./Pages";
 import { useState } from "react";
 import { BsFillHeartFill, BsFillCartFill } from "react-icons/bs";
 // import "../../assets/styles/components/headerCounter/headerCounter.scss";
@@ -22,16 +24,7 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <HeaderCounter className="headerCounterBox">
-          <div>
-            <BsFillHeartFill />
-            <span>Lorem ipsum dolor</span>
-          </div>
-          <div>
-            <BsFillCartFill />
-            <span>Lorem ipsum dolor2</span>
-          </div>
-        </HeaderCounter>
+        <HeaderCounter className="headerCounterBox" />
 
         {/* </CustomizedInputBase> */}
         <div className="logo-container">
@@ -44,8 +37,11 @@ function App() {
         <Slider />
       </div>
       {/* <Line /> */}
-      {/* <ActionAreaCard handleModalOpen={handleModalOpen} />
-      <BasicModal modalOpen={modalOpen} handleModalClose={handleModalClose} /> */}
+
+      <Login />
+
+      <ActionAreaCard handleModalOpen={handleModalOpen} />
+      <BasicModal modalOpen={modalOpen} handleModalClose={handleModalClose} />
     </div>
   );
 }
