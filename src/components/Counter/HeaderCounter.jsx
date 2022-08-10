@@ -1,5 +1,6 @@
 import { BsFillHeartFill, BsFillCartFill } from "react-icons/bs";
 import "../../assets/styles/components/headerCounter/headerCounter.scss";
+import { BsFillHeartFill, BsFillCartFill } from "react-icons/bs";
 
 export default function HeaderCounter() {
   return (
