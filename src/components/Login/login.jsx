@@ -16,11 +16,11 @@ const Login = () => {
   const paperStyle = {
     padding: 20,
     height: "70vh",
-    width: 280,
+    width: 480,
     margin: "20px auto",
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
-  const btnstyle = { margin: "20px 0", fonstSize: "30px" };
+  const btnstyle = { margin: "20px 0", height: "50px", fontSize: "large" };
   const linkstyle = { margin: "20px 0" };
   const fonstsize = { fonstsize: "large" };
   return (

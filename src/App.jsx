@@ -10,6 +10,7 @@ import {
   Menu,
   Slider,
   Login,
+  Aside,
 } from "components";
 // import { HelperTextMisaligned } from "./Pages";
 import { useState } from "react";
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div className="App">
+      <Aside>anmsikodfh</Aside>
       <header className="header">
         <HeaderCounter className="headerCounterBox" />
 

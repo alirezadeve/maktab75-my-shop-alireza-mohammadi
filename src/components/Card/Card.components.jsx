@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Button from "@mui/material/Button";
 import CardActions from "@mui/material/CardActions";
-import images from "../../images/5bb.jpg";
+import images from "../../images/camel-logo.png";
 
 export const ActionAreaCard = ({ handleModalOpen }) => {
   return (
