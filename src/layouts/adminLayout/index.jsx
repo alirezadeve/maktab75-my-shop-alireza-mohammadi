@@ -5,7 +5,7 @@ export default function AdminLayout() {
   return (
     <>
     <Outlet>
-        <h1>Admin</h1>
+        <h1>Admin binamos</h1>
     </Outlet>
     </>
   )
