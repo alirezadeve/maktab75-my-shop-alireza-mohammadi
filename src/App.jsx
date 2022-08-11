@@ -16,6 +16,7 @@ import {
 // import { HelperTextMisaligned } from "./Pages";
 import { useState } from "react";
 import { BsFillHeartFill, BsFillCartFill } from "react-icons/bs";
+import MyRoutes from "Routes";
 // import "../../assets/styles/components/headerCounter/headerCounter.scss";
 
 function App() {
@@ -25,26 +26,19 @@ function App() {
 
   return (
     <div className="App">
-      <Aside></Aside>
-      <header className="header">
-        <HeaderCounter className="headerCounterBox" />
-
-        {/* </CustomizedInputBase> */}
-        <div className="logo-container">
-          <Logo />
-        </div>
-        <CustomizedInputBase />
-      </header>
+      {/* <Aside></Aside>
+     
       <div>
         <Menu />
         <Slider />
       </div>
       {/* <Line /> */}
 
-      <Login />
+      {/* <Login />
 
       <ActionAreaCard handleModalOpen={handleModalOpen} />
-      <BasicModal modalOpen={modalOpen} handleModalClose={handleModalClose} />
+      <BasicModal modalOpen={modalOpen} handleModalClose={handleModalClose} />  */}
+      <MyRoutes />
     </div>
   );
 }
