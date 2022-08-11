@@ -1,6 +1,7 @@
 import { Login } from "components";
 import AdminLayout from "layouts/adminLayout";
 import HomeLayout from "layouts/homeLayout";
+import { Admin } from "Pages";
 // import Login from "Pages/Login/Login";
 // import Admin from "Pages";
 import React from "react";
@@ -13,7 +14,7 @@ export default function MyRoutes() {
         <Route path="login" element={<Login />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
-        {/* <Route index element={<Admin />} /> */}
+        <Route index element={<Admin />} />
       </Route>
     </Routes>
   );
