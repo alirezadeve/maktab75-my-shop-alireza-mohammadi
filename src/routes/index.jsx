@@ -1,4 +1,4 @@
-import { Login } from "components";
+import { Login, Logo } from "components";
 import AdminLayout from "layouts/adminLayout";
 import HomeLayout from "layouts/homeLayout";
 import { Admin } from "Pages";
@@ -10,7 +10,7 @@ export default function MyRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomeLayout />}>
-        {/* <Route index element={<Home />} /> */}
+        {/* <Route path="/" element={<Logo />} /> */}
         <Route path="login" element={<Login />} />
       </Route>
 
