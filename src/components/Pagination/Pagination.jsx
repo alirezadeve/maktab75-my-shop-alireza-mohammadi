@@ -1,18 +1,42 @@
 import * as React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { useEffect } from "react";
+import service from "services/Pagination-index";
+import { useState } from "react";
 const pageSize = 10;
+const flexBox = {
+  justifyContent: "center",
+  alignItems: "center",
+  display: "flex",
+};
 export default function PaginationSize() {
+  const [Pagination, setPagination] = useState({
+    count: 0,
+    from: 0,
+    to: pageSize,
+  });
+
+  useEffect(() => {
+    service
+      .getData({ from: Pagination.from, to: Pagination.to })
+      .then((response) => {
+        setPagination({ ...Pagination, count: response.count });
+      });
+  }, []);
+
+
   return (
     <box
-      justifyContent={"center"}
-      alignItems={"center"}
-      display={"flex"}
+      style={flexBox}
       sx={{
         margin: "20 0",
       }}
     >
-      <Pagination count={10} />
+      <Pagination
+        count={Math.ceil(Pagination.count / pageSize)}
+        onChange={handelPageChange}
+      />
     </box>
   );
 }
