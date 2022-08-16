@@ -69,7 +69,9 @@ export default function BasicTabs() {
     setValue(newValue);
   };
   const size = { fontSize: "14px" };
+  const tdWidth = { width: "37%", fontSize: "14px" };
   const Tsize = { fontSize: "18px" };
+  const imgSize = { width: "50px" };
   return (
     <Box
       sx={{
@@ -158,25 +160,20 @@ export default function BasicTabs() {
           <Table sx={{ minWidth: 650 }} aria-label="caption table">
             <caption>A basic table example with a caption</caption>
             <TableHead>
-              {products.map((product) => {
-                return (
-                  <TableRow>
-                    <TableCell style={Tsize}>Dessert (100g serving)</TableCell>
-                    <TableCell align="right" style={Tsize}>
-                      {product.title}
-                    </TableCell>
-                    <TableCell align="right" style={Tsize}>
-                      {product.barnd}
-                    </TableCell>
-                    <TableCell align="right" style={Tsize}>
-                      Carbs&nbsp;(g)
-                    </TableCell>
-                    <TableCell align="right" style={Tsize}>
-                      Protein&nbsp;(g)
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+              <TableRow>
+                <TableCell align="right" style={Tsize}>
+                  Calories
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  Fat&nbsp;(g)
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  Carbs&nbsp;(g)
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  Protein&nbsp;(g)
+                </TableCell>
+              </TableRow>
             </TableHead>
             {/*  */}
             <TableBody>
@@ -217,40 +214,45 @@ export default function BasicTabs() {
             <TableHead>
               {/*  */}
               <TableRow>
-                <TableCell style={Tsize}>Dessert (100g serving)</TableCell>
+                <TableCell style={Tsize}>عکس محصول</TableCell>
                 <TableCell align="right" style={Tsize}>
-                  Calories
+                  نام محصول
                 </TableCell>
                 <TableCell align="right" style={Tsize}>
-                  Fat&nbsp;(g)
+                  توضیحات
                 </TableCell>
                 <TableCell align="right" style={Tsize}>
-                  Carbs&nbsp;(g)
+                  قیمت محصول
                 </TableCell>
                 <TableCell align="right" style={Tsize}>
-                  Protein&nbsp;(g)
+                  عملیات
                 </TableCell>
               </TableRow>
               {/*  */}
             </TableHead>
             {/*  */}
             <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
+              {products.map((row) => (
+                <TableRow>
                   <TableCell component="th" scope="row" style={size}>
-                    {/* {row.name} */}alskfcdolpas
+                    <img
+                      style={imgSize}
+                      src={`${row.thumbnail}`}
+                      alt={`${row.title}`}
+                    />
                   </TableCell>
                   <TableCell align="right" style={size}>
-                    {/* {row.calories} */};skdpoak
+                    {row.title}
+                    {/* {row.category} */}
+                  </TableCell>
+                  <TableCell align="right" style={tdWidth}>
+                    {row.description}
                   </TableCell>
                   <TableCell align="right" style={size}>
-                    {/* {row.fat} */}amskfco
+                    {row.price}
                   </TableCell>
                   <TableCell align="right" style={size}>
-                    {/* {row.carbs} */}jmasidkoj
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    {row.protein}
+                    <button>add</button>
                   </TableCell>
                 </TableRow>
               ))}
