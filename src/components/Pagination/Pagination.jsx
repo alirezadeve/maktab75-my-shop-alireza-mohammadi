@@ -4,9 +4,15 @@ import Stack from "@mui/material/Stack";
 
 export default function PaginationSize() {
   return (
-    // <Stack spacing={2}>
-    //   <Pagination count={10} size="large" />
-    // </Stack>
-    <h1>jmoiqawduj</h1>
+    <box
+      justifyContent={"center"}
+      alignItems={"center"}
+      display={"flex"}
+      sx={{
+        margin: "20 0",
+      }}
+    >
+      <Pagination />
+    </box>
   );
 }

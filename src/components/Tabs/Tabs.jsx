@@ -13,6 +13,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import db from "../../db.json";
+import { PaginationSize } from "components";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -159,6 +160,7 @@ export default function BasicTabs() {
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="caption table">
             <caption>A basic table example with a caption</caption>
+            {/* <caption>A basic table example with a caption</caption> */}
             <TableHead>
               <TableRow>
                 <TableCell align="right" style={Tsize}>
@@ -178,7 +180,7 @@ export default function BasicTabs() {
             {/*  */}
             <TableBody>
               {user.map((row) => {
-                console.log(row);
+                // console.log(row);
                 return (
                   <TableRow key={row.name}>
                     <TableCell component="th" scope="row" style={size}>
@@ -263,6 +265,7 @@ export default function BasicTabs() {
         {/*  */}
       </TabPanel>
       {/*  */}
+      <PaginationSize />
     </Box>
   );
 }
