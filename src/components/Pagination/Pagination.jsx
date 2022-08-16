@@ -25,6 +25,10 @@ export default function PaginationSize() {
       });
   }, []);
 
+  const handelPageChange = (event, page) => {
+    const from = (page - 1) * pageSize;
+    const to = (page - 1) * pageSize + pageSize;
+  };
 
   return (
     <box
