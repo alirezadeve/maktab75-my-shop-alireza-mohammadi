@@ -65,12 +65,33 @@ export default function BasicTabs() {
 
   const [totalProductPages, setTotalProductPages] = useState(1);
   const [currentProductPage, setCurrentProductPage] = useState(1);
-  const [users, setUsers] = useState([]);
 
+  const [users, setUsers] = useState([]);
+  const [totalUsersPages, setTotalUsersPages] = useState(1);
+  const [currentUsersPage, setCurrentUsersPage] = useState(1);
+
+  const getUsers = async (page) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3001/users?_page=${page}&_limit=${5}`,
+        {
+          headers: {
+            "x-total-count": "x-total-count",
+          },
+        }
+      );
+      setUsers(res.data);
+      const totalUsers = Number(res.headers["x-total-count"]);
+      const totalPage = Math.ceil(totalUsers / 5);
+      setTotalUsersPages(totalPage);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const getProducts = async (page) => {
     try {
       const res = await axios.get(
-        `http://localhost:3001/products?_page=${page}&_limit=${10}`,
+        `http://localhost:3001/products?_page=${page}&_limit=${5}`,
         {
           headers: {
             "x-total-count": "x-total-count",
@@ -80,16 +101,11 @@ export default function BasicTabs() {
 
       setProducts(res.data);
       const totalProducts = Number(res.headers["x-total-count"]);
-      const totalPage = Math.ceil(totalProducts / 10);
+      const totalPage = Math.ceil(totalProducts / 5);
       setTotalProductPages(totalPage);
     } catch (error) {
       console.log(error);
     }
-  };
-  const getUsers = async () => {
-    axios.get("http://localhost:3001/users").then((res) => {
-      setUsers(res.data);
-    });
   };
 
   useEffect(() => {
@@ -217,7 +233,11 @@ export default function BasicTabs() {
                 return (
                   <TableRow key={row.name}>
                     <TableCell component="th" scope="row" style={size}>
-                      <img src={`${row.avatar}`} alt={`${row.name}`} />
+                      <img
+                        style={imgSize}
+                        src={`${row.avatar}`}
+                        alt={`${row.name}`}
+                      />
                     </TableCell>
                     <TableCell align="right" style={size}>
                       {row.name}
@@ -237,6 +257,15 @@ export default function BasicTabs() {
             </TableBody>
             {/*  */}
           </Table>
+          <Pagination
+            count={totalProductPages}
+            page={currentProductPage}
+            onChange={(e, page) => {
+              setCurrentProductPage(page);
+              getUsers(page);
+            }}
+            color="info"
+          />
         </TableContainer>
         {/*  */}
       </TabPanel>
@@ -250,7 +279,7 @@ export default function BasicTabs() {
               {/*  */}
               <TableRow>
                 <TableCell style={Tsize}>عکس محصول</TableCell>
-                <TableCell align="right" style={Tsize}>
+                <TableCell align="center" style={Tsize}>
                   نام محصول
                 </TableCell>
                 <TableCell align="right" style={Tsize}>
@@ -276,7 +305,7 @@ export default function BasicTabs() {
                       alt={`${row.title}`}
                     />
                   </TableCell>
-                  <TableCell align="right" style={size}>
+                  <TableCell align="center" style={size}>
                     {row.title}
                     {/* {row.category} */}
                   </TableCell>
@@ -293,14 +322,13 @@ export default function BasicTabs() {
               ))}
             </TableBody>
             <Pagination
-            
               count={totalProductPages}
               page={currentProductPage}
               onChange={(e, page) => {
                 setCurrentProductPage(page);
                 getProducts(page);
               }}
-              color="primary"
+              color="info"
             />
             {/*  */}
           </Table>
