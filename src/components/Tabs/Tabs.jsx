@@ -1,19 +1,20 @@
 // import * as React from "react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Paper } from "@mui/material";
+import { Pagination, Paper } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import db from "../../db.json";
+
 import { PaginationSize } from "components";
+import axios from "axios";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,9 +61,41 @@ const rows = [
   createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
 export default function BasicTabs() {
-  const [user, setUser] = useState(db.users);
-  // console.log("lkopjiuooilk", db);
-  const [products, setproducts] = useState(db.products);
+  const [products, setProducts] = useState([]);
+
+  const [totalProductPages, setTotalProductPages] = useState(1);
+  const [currentProductPage, setCurrentProductPage] = useState(1);
+  const [users, setUsers] = useState([]);
+
+  const getProducts = async (page) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3001/products?_page=${page}&_limit=${10}`,
+        {
+          headers: {
+            "x-total-count": "x-total-count",
+          },
+        }
+      );
+
+      setProducts(res.data);
+      const totalProducts = Number(res.headers["x-total-count"]);
+      const totalPage = Math.ceil(totalProducts / 10);
+      setTotalProductPages(totalPage);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getUsers = async () => {
+    axios.get("http://localhost:3001/users").then((res) => {
+      setUsers(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getProducts();
+    getUsers();
+  }, []);
 
   const [value, setValue] = React.useState(0);
 
@@ -98,9 +131,9 @@ export default function BasicTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Item One" style={size} {...a11yProps(0)} />
-          <Tab label="Item Two" style={size} {...a11yProps(1)} />
-          <Tab label="Item Three" style={size} {...a11yProps(2)} />
+          <Tab label="سفارشات" style={size} {...a11yProps(0)} />
+          <Tab label="کاربران" style={size} {...a11yProps(1)} />
+          <Tab label="محصولات" style={size} {...a11yProps(2)} />
         </Tabs>
       </Box>
       {/*  */}
@@ -179,7 +212,7 @@ export default function BasicTabs() {
             </TableHead>
             {/*  */}
             <TableBody>
-              {user.map((row) => {
+              {users.map((row) => {
                 // console.log(row);
                 return (
                   <TableRow key={row.name}>
@@ -235,7 +268,7 @@ export default function BasicTabs() {
             {/*  */}
             <TableBody>
               {products.map((row) => (
-                <TableRow>
+                <TableRow key={row.id}>
                   <TableCell component="th" scope="row" style={size}>
                     <img
                       style={imgSize}
@@ -259,13 +292,22 @@ export default function BasicTabs() {
                 </TableRow>
               ))}
             </TableBody>
+            <Pagination
+            
+              count={totalProductPages}
+              page={currentProductPage}
+              onChange={(e, page) => {
+                setCurrentProductPage(page);
+                getProducts(page);
+              }}
+              color="primary"
+            />
             {/*  */}
           </Table>
         </TableContainer>
         {/*  */}
       </TabPanel>
       {/*  */}
-      <PaginationSize />
     </Box>
   );
 }

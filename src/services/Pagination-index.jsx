@@ -1,13 +1,15 @@
-import { products } from "../db";
+import axios from "axios";
+
 const service = {
   getData: (from, to) => {
-    return new Promise((resolve, reject) => {
-      const data = products.slice(from, to);
-      resolve({
-        count: products.length,
-        data: data,
+    axios
+      .get(`http://localhost:3001/products`)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    });
   },
 };
 export default service;
