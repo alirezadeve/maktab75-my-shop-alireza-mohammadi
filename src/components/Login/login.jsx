@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Grid,
   Paper,
@@ -6,7 +7,7 @@ import {
   TextField,
   Button,
   Typography,
-  Link,
+  // Link,
   Checkbox,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -30,6 +31,7 @@ const Login = () => {
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
           </Avatar>
+
           <h2 style={linkstyle}> Sign In</h2>
         </Grid>
         <TextField
@@ -49,21 +51,23 @@ const Login = () => {
           control={<Checkbox name="checkedB" color="primary" />}
           label="Remember me"
         />
-        <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-          style={btnstyle}
-          fullWidth
-        >
-          Sign in
-        </Button>
+        <Link to="/admin">
+          <Button
+            // type="submit"
+            color="primary"
+            variant="contained"
+            style={btnstyle}
+            fullWidth
+          >
+            Sign in
+          </Button>
+        </Link>
         <Typography style={btnstyle}>
-          <Link href="#">فراموشی رمز عبور؟</Link>
+          <Link to="/">فراموشی رمز عبور؟</Link>
         </Typography>
         <Typography>
           {" "}
-          ایا شما اکانتی دارین ؟<Link href="#">ورود کن جوون</Link>
+          ایا شما اکانتی دارین ؟<Link to="/">ورود کن جوون</Link>
         </Typography>
       </Paper>
     </Grid>

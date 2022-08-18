@@ -1,0 +1,19 @@
+  const getProducts = async (page) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3001/products?_page=${page}&_limit=${5}`,
+        {
+          headers: {
+            "x-total-count": "x-total-count",
+          },
+        }
+      );
+
+      setProducts(res.data);
+      const totalProducts = Number(res.headers["x-total-count"]);
+      const totalPage = Math.ceil(totalProducts / 5);
+      setTotalProductPages(totalPage);
+    } catch (error) {
+      console.log(error);
+    }
+  };

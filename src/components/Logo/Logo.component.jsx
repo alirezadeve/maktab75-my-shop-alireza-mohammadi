@@ -1,7 +1,11 @@
-import logo from "../../images/camel-logo.png";
+// import logo from "../../images/camel-logo.png";
+import { Link } from "react-router-dom";
 import "../../assets/styles/components/Logo/Logo.icon.scss";
+const size = { fontSize: "40px" };
 export default function Logo() {
   return (
-    <img className="logo-icon" src="../../images/camel-logo.png" alt="#" />
+    <Link to="/">
+      <h1 style={size}>be gaei shadid</h1>;
+    </Link>
   );
 }

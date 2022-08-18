@@ -1,26 +1,16 @@
-import { Aside, Login, Menu, Slider } from "components";
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer/Footer";
+import Footer from "./footer/Footer";
 import Header from "./Header/Header";
+import List from "./List/List.jsx";
 
-export default function () {
+export default function HomeLayout() {
   return (
     <>
-      <Aside></Aside>
       <Header />
+      <List />
       <Outlet />
-      {/* 
-      <div>
-        <Menu />
-        <Slider />
-      </div> */}
-      {/* <line /> */}
 
-      {/* <Login />*/}
-
-      {/* <ActionAreaCard handleModalOpen={handleModalOpen} />
-      <BasicModal modalOpen={modalOpen} handleModalClose={handleModalClose} />   */}
       <Footer />
     </>
   );
