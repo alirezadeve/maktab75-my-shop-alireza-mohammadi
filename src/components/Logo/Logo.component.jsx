@@ -5,7 +5,7 @@ const size = { fontSize: "40px" };
 export default function Logo() {
   return (
     <Link to="/">
-      <h1 style={size}>be gaei shadid</h1>;
+      <h1 style={size}>MAMAD SHOP</h1>;
     </Link>
   );
 }
