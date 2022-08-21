@@ -147,9 +147,9 @@ export default function BasicTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="سفارشات" style={size} {...a11yProps(0)} />
-          <Tab label="کاربران" style={size} {...a11yProps(1)} />
-          <Tab label="محصولات" style={size} {...a11yProps(2)} />
+          <Tab label="محصولات" style={size} {...a11yProps(0)} />
+          <Tab label="موجودیت" style={size} {...a11yProps(1)} />
+          <Tab label="سشفارشات" style={size} {...a11yProps(2)} />
         </Tabs>
       </Box>
       {/*  */}
@@ -160,123 +160,6 @@ export default function BasicTabs() {
             <caption>A basic table example with a caption</caption>
             {/*  */}
             <TableHead>
-              <TableRow>
-                <TableCell style={Tsize}>Dessert (100g serving)</TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Calories
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Fat&nbsp;(g)
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Carbs&nbsp;(g)
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Protein&nbsp;(g)
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            {/*  */}
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
-                  <TableCell component="th" scope="row" style={size}>
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    {row.calories}
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    {row.fat}
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    {row.carbs}
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    {row.protein}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            {/*  */}
-          </Table>
-        </TableContainer>
-        {/*  */}
-      </TabPanel>
-      {/*  */}
-      <TabPanel value={value} index={1}>
-        {/*  */}
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="caption table">
-            <caption>A basic table example with a caption</caption>
-            {/* <caption>A basic table example with a caption</caption> */}
-            <TableHead>
-              <TableRow>
-                <TableCell align="right" style={Tsize}>
-                  Calories
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Fat&nbsp;(g)
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Carbs&nbsp;(g)
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Protein&nbsp;(g)
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            {/*  */}
-            <TableBody>
-              {users.map((row) => {
-                // console.log(row);
-                return (
-                  <TableRow key={row.name}>
-                    <TableCell component="th" scope="row" style={size}>
-                      <img
-                        style={imgSize}
-                        src={`${row.avatar}`}
-                        alt={`${row.name}`}
-                      />
-                    </TableCell>
-                    <TableCell align="right" style={size}>
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="right" style={size}>
-                      {row.lastName}
-                    </TableCell>
-                    <TableCell align="right" style={size}>
-                      {row.phoneNumber}
-                    </TableCell>
-                    <TableCell align="right" style={size}>
-                      {row.id}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-            {/*  */}
-          </Table>
-          <Pagination
-            count={totalProductPages}
-            page={currentProductPage}
-            onChange={(e, page) => {
-              setCurrentProductPage(page);
-              getUsers(page);
-            }}
-            color="info"
-          />
-        </TableContainer>
-        {/*  */}
-      </TabPanel>
-      {/*  */}
-      <TabPanel value={value} index={2}>
-        {/*  */}
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="caption table">
-            <caption>Add Delete Edit</caption>
-            <TableHead>
-              {/*  */}
               <TableRow>
                 <TableCell style={Tsize}>عکس محصول</TableCell>
                 <TableCell align="center" style={Tsize}>
@@ -292,7 +175,6 @@ export default function BasicTabs() {
                   عملیات
                 </TableCell>
               </TableRow>
-              {/*  */}
             </TableHead>
             {/*  */}
             <TableBody>
@@ -307,7 +189,6 @@ export default function BasicTabs() {
                   </TableCell>
                   <TableCell align="center" style={size}>
                     {row.title}
-                    {/* {row.category} */}
                   </TableCell>
                   <TableCell align="right" style={tdWidth}>
                     {row.description}
@@ -331,6 +212,106 @@ export default function BasicTabs() {
               color="info"
             />
             {/*  */}
+          </Table>
+        </TableContainer>
+        {/*  */}
+      </TabPanel>
+      {/*  */}
+      <TabPanel value={value} index={1}>
+        {/*  */}
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="caption table">
+            <caption>A basic table example with a caption</caption>
+            {/* <caption>A basic table example with a caption</caption> */}
+            <TableHead>
+              <TableRow>
+                <TableCell style={Tsize}>عکس محصول</TableCell>
+                <TableCell align="center" style={Tsize}>
+                  نام محصول
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  برند
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  موجودیت
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  قیمت محصول
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  عملیات
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            {/*  */}
+            <TableBody>
+              {products.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell component="th" scope="row" style={size}>
+                    <img
+                      style={imgSize}
+                      src={`${row.thumbnail}`}
+                      alt={`${row.title}`}
+                    />
+                  </TableCell>
+                  <TableCell align="center" style={size}>
+                    {row.title}
+                  </TableCell>
+                  <TableCell align="right" style={size}>
+                    {row.brand}
+                  </TableCell>
+                  <TableCell align="right" style={size}>
+                    {row.stock}
+                  </TableCell>
+                  <TableCell align="right" style={size}>
+                    {row.price}
+                  </TableCell>
+                  <TableCell align="right" style={size}>
+                    <button>add</button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            {/*  */}
+          </Table>
+          <Pagination
+            count={totalProductPages}
+            page={currentProductPage}
+            onChange={(e, page) => {
+              setCurrentProductPage(page);
+              getUsers(page);
+            }}
+            color="info"
+          />
+        </TableContainer>
+        {/*  */}
+      </TabPanel>
+      {/*  */}
+      <TabPanel value={value} index={2}>
+        {/*  */}
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="caption table">
+            <caption>Add Delete Edit</caption>
+            <TableHead>
+              {/*  */}
+
+              <TableRow>
+                <TableCell style={Tsize}>Dessert (100g serving)</TableCell>
+                <TableCell align="right" style={Tsize}>
+                  Calories
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  Fat&nbsp;(g)
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  Carbs&nbsp;(g)
+                </TableCell>
+                <TableCell align="right" style={Tsize}>
+                  Protein&nbsp;(g)
+                </TableCell>
+              </TableRow>
+              {/*  */}
+            </TableHead>
           </Table>
         </TableContainer>
         {/*  */}
