@@ -62,7 +62,6 @@ const rows = [
 ];
 export default function BasicTabs() {
   const [products, setProducts] = useState([]);
-
   const [totalProductPages, setTotalProductPages] = useState(1);
   const [currentProductPage, setCurrentProductPage] = useState(1);
 
@@ -70,6 +69,24 @@ export default function BasicTabs() {
   const [totalUsersPages, setTotalUsersPages] = useState(1);
   const [currentUsersPage, setCurrentUsersPage] = useState(1);
 
+  const getProducts = async (page) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3001/products?_page=${page}&_limit=${5}`,
+        {
+          headers: {
+            "x-total-count": "x-total-count",
+          },
+        }
+      );
+      setProducts(res.data);
+      const totalProducts = Number(res.headers["x-total-count"]);
+      const totalPage = Math.ceil(totalProducts / 5);
+      setTotalProductPages(totalPage);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const getUsers = async (page) => {
     try {
       const res = await axios.get(
@@ -88,26 +105,6 @@ export default function BasicTabs() {
       console.log(error);
     }
   };
-  const getProducts = async (page) => {
-    try {
-      const res = await axios.get(
-        `http://localhost:3001/products?_page=${page}&_limit=${5}`,
-        {
-          headers: {
-            "x-total-count": "x-total-count",
-          },
-        }
-      );
-
-      setProducts(res.data);
-      const totalProducts = Number(res.headers["x-total-count"]);
-      const totalPage = Math.ceil(totalProducts / 5);
-      setTotalProductPages(totalPage);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     getProducts();
     getUsers();
@@ -279,7 +276,7 @@ export default function BasicTabs() {
             page={currentProductPage}
             onChange={(e, page) => {
               setCurrentProductPage(page);
-              getUsers(page);
+              getProducts(page);
             }}
             color="info"
           />

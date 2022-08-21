@@ -7,11 +7,11 @@ export default function HeaderCounter() {
     <div className="headerCounterBox">
       <div>
         <BsFillHeartFill />
-        <span>Lorem ipsum dolor</span>
+        <span>علاقه مندی ها</span>
       </div>
       <div>
         <BsFillCartFill />
-        <span>Lorem ipsum dolor2</span>
+        <span>سبد خرید </span>
       </div>
       {/* // <div>
       //       <BsFillHeartFill />

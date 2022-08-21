@@ -8,11 +8,11 @@ import Tooltip from "@mui/material/Tooltip";
 import { Grid, Paper, Avatar, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 const box = {
-  padding: 20,
+  padding: 36,
   height: "10px",
   width: "97%",
   margin: "8px auto",
-  backgroundColor: "gray",
+  backgroundColor: "#00695C",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -38,6 +38,7 @@ const phon = {
   justifyContent: "space-between",
   // padding: "0px 30px",
   paddingLeft: "50px",
+  color: "#fff",
 };
 const phonN = {
   fontSize: "15px",

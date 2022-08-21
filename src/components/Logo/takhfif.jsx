@@ -13,11 +13,11 @@ export default function Takhfif() {
     <Box style={logoBox}>
       <TipsAndUpdatesIcon
         sx={{
-          ml: 2,
+          mr: 2,
         }}
       />
       <Typography variant="h4" gutterBottom component="div">
-        لورم اسپیرم ندئسیشبخه
+        راهنمایی
       </Typography>
     </Box>
   );

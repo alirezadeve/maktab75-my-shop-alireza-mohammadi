@@ -104,7 +104,7 @@ export default function Menu() {
         variant="outlined"
         size="large"
       >
-        home
+        خانه
       </Button>
       <Button
         sx={{ ml: "2rem" }}
@@ -113,7 +113,7 @@ export default function Menu() {
         variant="outlined"
         size="large"
       >
-        mahsol1
+        محصول1
       </Button>
       <Button
         sx={{ ml: "2rem" }}
@@ -122,7 +122,7 @@ export default function Menu() {
         variant="outlined"
         size="large"
       >
-        mahsol2
+        محصول2
       </Button>
       <Button
         sx={{ ml: "2rem" }}
@@ -131,7 +131,7 @@ export default function Menu() {
         variant="outlined"
         size="large"
       >
-        mahsol3
+        محصول3
       </Button>
       <Button
         sx={{ ml: "2rem" }}
@@ -140,7 +140,7 @@ export default function Menu() {
         variant="outlined"
         size="large"
       >
-        mahsol4
+        محصول4{" "}
       </Button>
       <Link to="login">
         <Button
@@ -150,7 +150,7 @@ export default function Menu() {
           variant="outlined"
           size="large"
         >
-          login
+          ورود
         </Button>
       </Link>
     </>

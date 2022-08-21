@@ -18,7 +18,11 @@ import { Admin } from "./Pages";
 import { useState } from "react";
 import { BsFillHeartFill, BsFillCartFill } from "react-icons/bs";
 import MyRoutes from "Routes";
+import RtlLayout from "theme/RtlLayout";
+import { ThemeProvider } from "@mui/material/styles";
+import { GlobalStyles, CssBaseline } from "@mui/material";
 
+import theme from "./theme/theme";
 // import "../../assets/styles/components/headerCounter/headerCounter.scss";
 
 function App() {
@@ -27,8 +31,15 @@ function App() {
   const handleModalClose = () => setModalOpen(false);
 
   return (
-    <div className="App">
-      {/* <Admin>
+    <RtlLayout>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles
+          styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
+        />
+        <CssBaseline />
+
+        <div className="App">
+          {/* <Admin>
         lksweiduhgiuylksdfiuhdvlkjsdo9i8jolksvlkjodaivoudsalkdanoiujhdandsaj
       </Admin>
     
@@ -39,11 +50,13 @@ function App() {
         <Slider />
       </div>
       {/* <Line /> */}
-      {/* <Login />
+          {/* <Login />
       <ActionAreaCard handleModalOpen={handleModalOpen} />
       <BasicModal modalOpen={modalOpen} handleModalClose={handleModalClose} />  */}
-      <MyRoutes />
-    </div>
+          <MyRoutes />
+        </div>
+      </ThemeProvider>
+    </RtlLayout>
   );
 }
 

@@ -265,8 +265,8 @@ export default function CustomizedInputBase() {
       </IconButton>
       <InputBase
         sx={{ ml: 1, flex: 1 }}
-        placeholder="search somthing..."
-        inputProps={{ "aria-label": "search somthing..." }}
+        placeholder="جست و جو کنید..."
+        inputProps={{ "aria-label": "جست و جو کنید..." }}
       />
       {/* <div sx={{ ml: 1, flex: 1, display: "flex", justifyContent: "start" 
     }}>
