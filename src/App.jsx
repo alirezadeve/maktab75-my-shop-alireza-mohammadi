@@ -17,7 +17,8 @@ import {
 import { Admin } from "./Pages";
 import { useState } from "react";
 import { BsFillHeartFill, BsFillCartFill } from "react-icons/bs";
-import MyRoutes from "routes";
+import MyRoutes from "Routes";
+
 // import "../../assets/styles/components/headerCounter/headerCounter.scss";
 
 function App() {
@@ -42,7 +43,6 @@ function App() {
       <ActionAreaCard handleModalOpen={handleModalOpen} />
       <BasicModal modalOpen={modalOpen} handleModalClose={handleModalClose} />  */}
       <MyRoutes />
-      
     </div>
   );
 }
