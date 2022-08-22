@@ -2,7 +2,7 @@ export * from "./Loading/Loading.component";
 export * from "./Button/Button.component";
 export * from "./Input/Input.component";
 export * from "./Todo/Todo.component";
-export { ActionAreaCard } from "./Card/Card.components";
+export { default as ActionAreaCard } from "./Card/Card.components";
 export { default as BasicModal } from "./Modal/Modal.component";
 export { default as CustomizedInputBase } from "./searchBar/searchBar.component";
 export { default as Logo } from "./Logo/Logo.component";
