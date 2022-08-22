@@ -1,9 +1,12 @@
-import { ActionAreaCard } from 'components'
+import { ActionAreaCard, TabPanel } from 'components'
 import React from 'react'
 
 const PLP = () => {
   return (
-    <div><ActionAreaCard /></div>
+    <div>
+      {/* <ActionAreaCard /> */}
+      <TabPanel />
+    </div>
   )
 }
 

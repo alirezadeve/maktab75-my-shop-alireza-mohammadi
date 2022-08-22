@@ -15,7 +15,7 @@ export const ActionAreaCard = ({ handleModalOpen }) => {
   const [products, setProducts] = useState([]);
   console.log(products);
 
-  const getProducts = async (page) => {
+  const getProducts = async () => {
     try {
       const res = await axios.get(`http://localhost:3001/products`, {
         headers: {
