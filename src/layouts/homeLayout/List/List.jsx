@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 import { Menu, Takhfif } from "components";
 import React from "react";
 import "../../../assets/styles/components/Flex/Flex.scss";
-const size = { width: "50%" };
+const size = { width: "50%", margin: "0 0 50px  0" };
 const lorem = { width: "13%" };
 
 export default function List() {
@@ -13,7 +13,7 @@ export default function List() {
           <Menu />
         </Box>
         <Box className="box" style={lorem}>
-          <Takhfif  />
+          <Takhfif />
         </Box>
       </Box>
     </>

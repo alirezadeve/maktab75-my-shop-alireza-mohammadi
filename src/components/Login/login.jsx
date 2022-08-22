@@ -32,24 +32,24 @@ const Login = () => {
             <LockOutlinedIcon />
           </Avatar>
 
-          <h2 style={linkstyle}> Sign In</h2>
+          <h2 style={linkstyle}> فرم ورودی</h2>
         </Grid>
         <TextField
-          label="Username"
-          placeholder="Enter username"
+          label="نام کاربری"
+          placeholder="نام کاربری"
           fullWidth
           required
         />
         <TextField
-          label="Password"
+          label="رمز ورود"
           placeholder="Enter password"
-          type="password"
+          type="رمز ورود"
           fullWidth
           required
         />
         <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
-          label="Remember me"
+          label="مرا به یاد بسپار"
         />
         <Link to="/admin">
           <Button
@@ -59,7 +59,7 @@ const Login = () => {
             style={btnstyle}
             fullWidth
           >
-            Sign in
+            ورود
           </Button>
         </Link>
         <Typography style={btnstyle}>

@@ -3,7 +3,9 @@ import { Button, Box } from "@mui/material";
 
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import { createTheme } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+import { Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+
 const btn = {
   width: "100px",
   height: "40px",
@@ -142,9 +144,15 @@ export default function Menu() {
       >
         محصول4{" "}
       </Button>
-      <Link to="login">
+      <Link
+        component={RouterLink}
+        to="login"
+        sx={{
+          textDecoration: "none",
+        }}
+      >
         <Button
-          sx={{ ml: "2rem" }}
+          sx={{ textDecoration: "none", ml: "2rem" }}
           style={btn}
           // color="primary"
           variant="outlined"
