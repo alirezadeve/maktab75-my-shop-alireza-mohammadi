@@ -91,65 +91,15 @@ export default function BasicTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
           <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Item One" {...a11yProps(0)} />
           <Tab label="Item Three" {...a11yProps(2)} />
           <Tab label="Item for" {...a11yProps(3)} />
           <Tab label="Item five" {...a11yProps(4)} />
+          <Tab label="Item six" {...a11yProps(5)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "20px",
-          }}
-        >
-          {products
-            .filter((product) => product.category.includes("smartphones"))
-            .map((smartphones) => (
-              <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image={smartphones.thumbnail}
-                    alt="green iguana"
-                  />
-                  <CardContent>
-                    <Typography
-                      fontSize="17px"
-                      fontWeight="bold"
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                    >
-                      {smartphones.title}
-                    </Typography>
-                    <Typography
-                      fontSize="17px"
-                      variant="body2"
-                      color="text.secondary"
-                    >
-                      {smartphones.description}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button
-                    variant="outlined"
-                    onClick={() => {
-                      // handleModalOpen();
-                    }}
-                  >
-                    Primary
-                  </Button>
-                </CardActions>
-              </Card>
-            ))}
-        </Box>
-      </TabPanel>
+
       <TabPanel value={value} index={1}>
         <Box
           sx={{
@@ -185,6 +135,58 @@ export default function BasicTabs() {
                       color="text.secondary"
                     >
                       {laptops.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      // handleModalOpen();
+                    }}
+                  >
+                    Primary
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
+        </Box>
+      </TabPanel>
+      <TabPanel value={value} index={0}>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "20px",
+          }}
+        >
+          {products
+            .filter((product) => product.category.includes("smartphones"))
+            .map((smartphones) => (
+              <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={smartphones.thumbnail}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography
+                      fontSize="17px"
+                      fontWeight="bold"
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                    >
+                      {smartphones.title}
+                    </Typography>
+                    <Typography
+                      fontSize="17px"
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {smartphones.description}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -341,6 +343,58 @@ export default function BasicTabs() {
                       color="text.secondary"
                     >
                       {groceries.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      // handleModalOpen();
+                    }}
+                  >
+                    Primary
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
+        </Box>
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "20px",
+          }}
+        >
+          {products
+            .filter((product) => product.category.includes("homeDecoration"))
+            .map((homeDecoration) => (
+              <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={homeDecoration.thumbnail}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography
+                      fontSize="17px"
+                      fontWeight="bold"
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                    >
+                      {homeDecoration.title}
+                    </Typography>
+                    <Typography
+                      fontSize="17px"
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {homeDecoration.description}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
