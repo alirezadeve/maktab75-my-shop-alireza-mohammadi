@@ -94,6 +94,7 @@ export default function BasicTabs() {
           <Tab label="Item One" {...a11yProps(0)} />
           <Tab label="Item Two" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Item for" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -156,46 +157,48 @@ export default function BasicTabs() {
             gap: "20px",
           }}
         >
-          {products.map((products) => (
-            <Card sx={{ maxWidth: 345 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={products.thumbnail}
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography
-                    fontSize="17px"
-                    fontWeight="bold"
-                    gutterBottom
-                    variant="h5"
-                    component="div"
+          {products
+            .filter((product) => product.category.includes("laptops"))
+            .map((laptops) => (
+              <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={laptops.thumbnail}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography
+                      fontSize="17px"
+                      fontWeight="bold"
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                    >
+                      {laptops.title}
+                    </Typography>
+                    <Typography
+                      fontSize="17px"
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {laptops.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      // handleModalOpen();
+                    }}
                   >
-                    {products.title}
-                  </Typography>
-                  <Typography
-                    fontSize="17px"
-                    variant="body2"
-                    color="text.secondary"
-                  >
-                    {products.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button
-                  variant="outlined"
-                  onClick={() => {
-                    // handleModalOpen();
-                  }}
-                >
-                  Primary
-                </Button>
-              </CardActions>
-            </Card>
-          ))}
+                    Primary
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
         </Box>
       </TabPanel>
       <TabPanel value={value} index={2}>
@@ -206,46 +209,100 @@ export default function BasicTabs() {
             gap: "20px",
           }}
         >
-          {products.map((products) => (
-            <Card sx={{ maxWidth: 345 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={products.thumbnail}
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography
-                    fontSize="17px"
-                    fontWeight="bold"
-                    gutterBottom
-                    variant="h5"
-                    component="div"
+          {products
+            .filter((product) => product.category.includes("fragrances"))
+            .map((fragrances) => (
+              <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={fragrances.thumbnail}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography
+                      fontSize="17px"
+                      fontWeight="bold"
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                    >
+                      {fragrances.title}
+                    </Typography>
+                    <Typography
+                      fontSize="17px"
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {fragrances.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      // handleModalOpen();
+                    }}
                   >
-                    {products.title}
-                  </Typography>
-                  <Typography
-                    fontSize="17px"
-                    variant="body2"
-                    color="text.secondary"
+                    Primary
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
+        </Box>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "20px",
+          }}
+        >
+          {products
+            .filter((product) => product.category.includes("skincare"))
+            .map((skincare) => (
+              <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={skincare.thumbnail}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography
+                      fontSize="17px"
+                      fontWeight="bold"
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                    >
+                      {skincare.title}
+                    </Typography>
+                    <Typography
+                      fontSize="17px"
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {skincare.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      // handleModalOpen();
+                    }}
                   >
-                    {products.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button
-                  variant="outlined"
-                  onClick={() => {
-                    // handleModalOpen();
-                  }}
-                >
-                  Primary
-                </Button>
-              </CardActions>
-            </Card>
-          ))}
+                    Primary
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
         </Box>
       </TabPanel>
     </Box>
