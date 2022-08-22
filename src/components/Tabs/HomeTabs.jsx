@@ -95,6 +95,7 @@ export default function BasicTabs() {
           <Tab label="Item Two" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
           <Tab label="Item for" {...a11yProps(3)} />
+          <Tab label="Item five" {...a11yProps(4)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -288,6 +289,58 @@ export default function BasicTabs() {
                       color="text.secondary"
                     >
                       {skincare.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      // handleModalOpen();
+                    }}
+                  >
+                    Primary
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
+        </Box>
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "20px",
+          }}
+        >
+          {products
+            .filter((product) => product.category.includes("groceries"))
+            .map((groceries) => (
+              <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={groceries.thumbnail}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography
+                      fontSize="17px"
+                      fontWeight="bold"
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                    >
+                      {groceries.title}
+                    </Typography>
+                    <Typography
+                      fontSize="17px"
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {groceries.description}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
