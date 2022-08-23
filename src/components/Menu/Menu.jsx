@@ -105,17 +105,22 @@ export default function Menu() {
         // color="primary"
         variant="outlined"
         size="large"
+        component={RouterLink}
+        to="/"
       >
         خانه
       </Button>
+
       <Button
         sx={{ ml: "2rem" }}
         style={btn}
         // color="primary"
         variant="outlined"
         size="large"
+        component={RouterLink}
+        to="category/smartphones"
       >
-        محصول1
+        موبایل
       </Button>
       <Button
         sx={{ ml: "2rem" }}
@@ -123,8 +128,10 @@ export default function Menu() {
         // color="primary"
         variant="outlined"
         size="large"
+        component={RouterLink}
+        to="category/laptops"
       >
-        محصول2
+        لپ تاپ
       </Button>
       <Button
         sx={{ ml: "2rem" }}
@@ -132,8 +139,10 @@ export default function Menu() {
         // color="primary"
         variant="outlined"
         size="large"
+        component={RouterLink}
+        to="category/fragrances"
       >
-        محصول3
+        عطر
       </Button>
       <Button
         sx={{ ml: "2rem" }}
@@ -141,26 +150,52 @@ export default function Menu() {
         // color="primary"
         variant="outlined"
         size="large"
+        component={RouterLink}
+        to="category/skincare"
       >
-        محصول4{" "}
+        روغن
       </Button>
-      <Link
+      <Button
+        sx={{ ml: "2rem" }}
+        style={btn}
+        // color="primary"
+        variant="outlined"
+        size="large"
+        component={RouterLink}
+        to="category/groceries"
+      >
+        خوراکی
+      </Button>
+      <Button
+        sx={{ ml: "2rem" }}
+        style={btn}
+        // color="primary"
+        variant="outlined"
+        size="large"
+        component={RouterLink}
+        to="category/homeDecoration"
+      >
+        وسیله
+      </Button>
+      {/* <Link
         component={RouterLink}
         to="login"
         sx={{
           textDecoration: "none",
         }}
+      > */}
+      <Button
+        sx={{ textDecoration: "none", ml: "2rem" }}
+        style={btn}
+        // color="primary"
+        variant="outlined"
+        size="large"
+        component={RouterLink}
+        to="login"
       >
-        <Button
-          sx={{ textDecoration: "none", ml: "2rem" }}
-          style={btn}
-          // color="primary"
-          variant="outlined"
-          size="large"
-        >
-          ورود
-        </Button>
-      </Link>
+        ورود
+      </Button>
+      {/* </Link> */}
     </>
   );
 }

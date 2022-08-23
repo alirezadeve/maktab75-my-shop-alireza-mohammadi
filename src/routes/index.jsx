@@ -2,6 +2,7 @@ import { Login } from "components";
 import AdminLayout from "layouts/adminLayout";
 import HomeLayout from "layouts/homeLayout";
 import { Admin } from "Pages";
+import Category from "Pages/Category/Category";
 import Home from "Pages/Home";
 import PDP from "Pages/PDP/PDP";
 // import Login from "Pages/Login/Login";
@@ -15,7 +16,9 @@ export default function MyRoutes() {
       <Route path="/" element={<HomeLayout />}>
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="PDP" element={<PDP />} />
+        <Route path="/category/:category" element={<Category />} />
+
+        {/* <Route path="PDP" element={<PDP />} /> */}
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Admin />} />
