@@ -1167,7 +1167,7 @@
       "rating": 4.08,
       "stock": 131,
       "brand": "Boho Decor",
-      "category": "home-decoration",
+      "category": "homeDecoration",
       "thumbnail": "https://dummyjson.com/image/i/products/26/thumbnail.jpg",
       "images": [
         "https://dummyjson.com/image/i/products/26/1.jpg",
@@ -1187,7 +1187,7 @@
       "rating": 4.41,
       "stock": 17,
       "brand": "Flying Wooden",
-      "category": "home-decoration",
+      "category": "homeDecoration",
       "thumbnail": "https://dummyjson.com/image/i/products/27/thumbnail.webp",
       "images": [
         "https://dummyjson.com/image/i/products/27/1.jpg",
@@ -1206,7 +1206,7 @@
       "rating": 4.82,
       "stock": 54,
       "brand": "LED Lights",
-      "category": "home-decoration",
+      "category": "homeDecoration",
       "thumbnail": "https://dummyjson.com/image/i/products/28/thumbnail.jpg",
       "images": [
         "https://dummyjson.com/image/i/products/28/1.jpg",
@@ -1225,7 +1225,7 @@
       "rating": 4.44,
       "stock": 7,
       "brand": "luxury palace",
-      "category": "home-decoration",
+      "category": "homeDecoration",
       "thumbnail": "https://dummyjson.com/image/i/products/29/thumbnail.webp",
       "images": [
         "https://dummyjson.com/image/i/products/29/1.jpg",
@@ -1244,7 +1244,7 @@
       "rating": 4.92,
       "stock": 54,
       "brand": "Golden",
-      "category": "home-decoration",
+      "category": "homeDecoration",
       "thumbnail": "https://dummyjson.com/image/i/products/30/thumbnail.jpg",
       "images": [
         "https://dummyjson.com/image/i/products/30/1.jpg",
