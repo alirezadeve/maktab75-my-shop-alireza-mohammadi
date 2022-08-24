@@ -1,20 +1,22 @@
 // import * as React from "react";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Pagination, Paper } from "@mui/material";
+import { Button, Pagination, Paper, TextField } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { nanoid } from "nanoid";
 
 import { PaginationSize } from "components";
 import axios from "axios";
+import EditableRow from "components/EditableRow/EditableRow ";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -69,6 +71,37 @@ export default function BasicTabs() {
   const [totalUsersPages, setTotalUsersPages] = useState(1);
   const [currentUsersPage, setCurrentUsersPage] = useState(1);
 
+  const [addFormData, setAddFormData] = useState({
+    title: "",
+    description: "",
+    price: "",
+  });
+  
+
+  const handleAddFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...addFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setAddFormData(newFormData);
+  };
+  const handleAddFormSubmit = (event) => {
+    event.preventDefault();
+
+    const newContact = {
+      id: nanoid(),
+      title: addFormData.title,
+      description: addFormData.description,
+      price: addFormData.price,
+    };
+    const newContacts = [...products, newContact];
+    setProducts(newContacts);
+  };
+ 
   const getProducts = async (page) => {
     try {
       const res = await axios.get(
@@ -87,27 +120,9 @@ export default function BasicTabs() {
       console.log(error);
     }
   };
-  const getUsers = async (page) => {
-    try {
-      const res = await axios.get(
-        `http://localhost:3001/users?_page=${page}&_limit=${5}`,
-        {
-          headers: {
-            "x-total-count": "x-total-count",
-          },
-        }
-      );
-      setUsers(res.data);
-      const totalUsers = Number(res.headers["x-total-count"]);
-      const totalPage = Math.ceil(totalUsers / 5);
-      setTotalUsersPages(totalPage);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   useEffect(() => {
     getProducts();
-    getUsers();
   }, []);
 
   const [value, setValue] = React.useState(0);
@@ -149,6 +164,53 @@ export default function BasicTabs() {
           <Tab label="سشفارشات" style={size} {...a11yProps(2)} />
         </Tabs>
       </Box>
+      <Box
+        sx={{
+          width: "90%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        {/* <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { m: 1 },
+          }}
+          noValidate
+          autoComplete="off"
+        > */}
+        <form onSubmit={handleAddFormSubmit}>
+          <TextField
+            id="outlined-basic"
+            label="Outlined"
+            variant="outlined"
+            name="title"
+            type="text"
+            onChange={handleAddFormChange}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Outlined"
+            variant="outlined"
+            name="description"
+            type="text"
+            onChange={handleAddFormChange}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Outlined"
+            variant="outlined"
+            name="price"
+            type="text"
+            onChange={handleAddFormChange}
+          />
+          {/* <button type="submit">Add</button> */}
+          <Button variant="outlined" type="submit">
+            Add
+          </Button>
+        </form>
+        {/* </Box> */}
+      </Box>
       {/*  */}
       <TabPanel value={value} index={0}>
         {/*  */}
@@ -156,49 +218,63 @@ export default function BasicTabs() {
           <Table sx={{ minWidth: 650 }} aria-label="caption table">
             <caption>A basic table example with a caption</caption>
             {/*  */}
-            <TableHead>
-              <TableRow>
-                <TableCell style={Tsize}>عکس محصول</TableCell>
-                <TableCell align="center" style={Tsize}>
-                  نام محصول
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  توضیحات
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  قیمت محصول
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  عملیات
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            {/*  */}
-            <TableBody>
-              {products.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell component="th" scope="row" style={size}>
-                    <img
-                      style={imgSize}
-                      src={`${row.thumbnail}`}
-                      alt={`${row.title}`}
-                    />
+            <form>
+              <TableHead>
+                <TableRow>
+                  <TableCell style={Tsize}>عکس محصول</TableCell>
+                  <TableCell align="center" style={Tsize}>
+                    نام محصول
                   </TableCell>
-                  <TableCell align="center" style={size}>
-                    {row.title}
+                  <TableCell align="right" style={Tsize}>
+                    توضیحات
                   </TableCell>
-                  <TableCell align="right" style={tdWidth}>
-                    {row.description}
+                  <TableCell align="right" style={Tsize}>
+                    قیمت محصول
                   </TableCell>
-                  <TableCell align="right" style={size}>
-                    {row.price}
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    <button>add</button>
+                  <TableCell align="right" style={Tsize}>
+                    عملیات
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              </TableHead>
+              {/*  */}
+              <TableBody>
+                <Fragment>
+                  {products.map((row) => (
+                    <TableRow key={row.id}>
+                      <TableCell component="th" scope="row" style={size}>
+                        <img
+                          style={imgSize}
+                          src={`${row.thumbnail}`}
+                          alt={`${row.title}`}
+                        />
+                      </TableCell>
+                      <TableCell align="center" style={size}>
+                        {row.title}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+        <TextField
+          id="standard-basic"
+          label="Standard"
+          variant="standard"
+          value={editFormData.title}
+          type="text"
+          onChange={handleEditFormChange}
+        />
+                      <TableCell align="right" style={tdWidth}>
+                        {row.description}
+                      </TableCell>
+                      <TableCell align="right" style={size}>
+                        {row.price}
+                      </TableCell>
+                      <TableCell align="right" style={size}>
+                        <button>add</button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                  <EditableRow products={products} />
+                </Fragment>
+              </TableBody>
+            </form>
             <Pagination
               count={totalProductPages}
               page={currentProductPage}
