@@ -17,6 +17,7 @@ import { nanoid } from "nanoid";
 import { PaginationSize } from "components";
 import axios from "axios";
 import EditableRow from "components/EditableRow/EditableRow ";
+import ReadOnlyRow from "components/ReadOnlyRow/ReadOnlyRow";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -67,16 +68,76 @@ export default function BasicTabs() {
   const [totalProductPages, setTotalProductPages] = useState(1);
   const [currentProductPage, setCurrentProductPage] = useState(1);
 
-  const [users, setUsers] = useState([]);
-  const [totalUsersPages, setTotalUsersPages] = useState(1);
-  const [currentUsersPage, setCurrentUsersPage] = useState(1);
+  // const [users, setUsers] = useState([]);
+  // const [totalUsersPages, setTotalUsersPages] = useState(1);
+  // const [currentUsersPage, setCurrentUsersPage] = useState(1);
 
+  // const handleAddFormChange = (event) => {
+  //   event.preventDefault();
+
+  //   const fieldName = event.target.getAttribute("name");
+  //   const fieldValue = event.target.value;
+
+  //   const newFormData = { ...addFormData };
+  //   newFormData[fieldName] = fieldValue;
+
+  //   setAddFormData(newFormData);
+  // };
+  // const handleAddFormSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   const newContact = {
+  //     id: nanoid(),
+  //     title: addFormData.title,
+  //     description: addFormData.description,
+  //     price: addFormData.price,
+  //   };
+  //   const newContacts = [...products, newContact];
+  //   setProducts(newContacts);
+  // };
+
+  // const [addFormData, setAddFormData] = useState({
+  //   title: "",
+  //   description: "",
+  //   price: "",
+  // });
+  // const [editFormData, setEditFormData] = useState({
+  //   fullName: "",
+  //   address: "",
+  //   phoneNumber: "",
+  //   email: "",
+  // });
+  // const [editContactId, setEditContactId] = useState(null);
+  // const handleEditFormChange = (event) => {
+  //   event.preventDefault();
+
+  //   const fieldName = event.target.getAttribute("name");
+  //   const fieldValue = event.target.value;
+
+  //   const newFormData = { ...editFormData };
+  //   newFormData[fieldName] = fieldValue;
+
+  //   setEditFormData(newFormData);
+  // };
+  // const handleCancelClick = () => {
+  //   setEditContactId(null);
+  // };
+  // const [contacts, setContacts] = useState(data);
   const [addFormData, setAddFormData] = useState({
-    title: "",
-    description: "",
-    price: "",
+    fullName: "",
+    address: "",
+    phoneNumber: "",
+    email: "",
   });
-  
+
+  const [editFormData, setEditFormData] = useState({
+    fullName: "",
+    address: "",
+    phoneNumber: "",
+    email: "",
+  });
+
+  const [editContactId, setEditContactId] = useState(null);
 
   const handleAddFormChange = (event) => {
     event.preventDefault();
@@ -89,19 +150,83 @@ export default function BasicTabs() {
 
     setAddFormData(newFormData);
   };
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  };
+
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
 
     const newContact = {
       id: nanoid(),
-      title: addFormData.title,
-      description: addFormData.description,
-      price: addFormData.price,
+      fullName: addFormData.fullName,
+      address: addFormData.address,
+      phoneNumber: addFormData.phoneNumber,
+      email: addFormData.email,
     };
-    const newContacts = [...products, newContact];
-    setProducts(newContacts);
+
+    const newProducts = [...products, newContact];
+    setProducts(newProducts);
   };
- 
+
+  const handleEditFormSubmit = (event) => {
+    event.preventDefault();
+
+    const editedContact = {
+      id: editContactId,
+      fullName: editFormData.fullName,
+      address: editFormData.address,
+      phoneNumber: editFormData.phoneNumber,
+      email: editFormData.email,
+    };
+
+    const newProducts = [...products];
+
+    const index = products.findIndex((contact) => contact.id === editContactId);
+
+    newProducts[index] = editedContact;
+
+    setProducts(newProducts);
+    setEditContactId(null);
+  };
+
+  const handleEditClick = (event, contact) => {
+    event.preventDefault();
+    setEditContactId(contact.id);
+
+    const formValues = {
+      fullName: contact.fullName,
+      address: contact.address,
+      phoneNumber: contact.phoneNumber,
+      email: contact.email,
+    };
+
+    setEditFormData(formValues);
+  };
+
+  const handleCancelClick = () => {
+    setEditContactId(null);
+  };
+
+  const handleDeleteClick = (contactId) => {
+    const newProducts = [...products];
+
+    const index = products.findIndex((contact) => contact.id === contactId);
+
+    newProducts.splice(index, 1);
+
+    setProducts(newProducts);
+  };
+
   const getProducts = async (page) => {
     try {
       const res = await axios.get(
@@ -134,262 +259,77 @@ export default function BasicTabs() {
   const tdWidth = { width: "37%", fontSize: "14px" };
   const Tsize = { fontSize: "18px" };
   const imgSize = { width: "50px" };
-  return (
-    <Box
-      sx={{
-        width: "100%",
-        backgroundColor: "secondary",
-        paddingLeft: "20px",
-        paddingRight: "20px",
-        bgcolor: "secondary",
-      }}
-    >
-      <Box
-        sx={{
-          border: 1,
-          borderColor: "divider",
-          display: "flex",
-          justifyContent: "center",
-          padding: "30px 10px",
-          backgroundColor: "secondary",
-        }}
-      >
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab label="محصولات" style={size} {...a11yProps(0)} />
-          <Tab label="موجودیت" style={size} {...a11yProps(1)} />
-          <Tab label="سشفارشات" style={size} {...a11yProps(2)} />
-        </Tabs>
-      </Box>
-      <Box
-        sx={{
-          width: "90%",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        {/* <Box
-          component="form"
-          sx={{
-            "& > :not(style)": { m: 1 },
-          }}
-          noValidate
-          autoComplete="off"
-        > */}
-        <form onSubmit={handleAddFormSubmit}>
-          <TextField
-            id="outlined-basic"
-            label="Outlined"
-            variant="outlined"
-            name="title"
-            type="text"
-            onChange={handleAddFormChange}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Outlined"
-            variant="outlined"
-            name="description"
-            type="text"
-            onChange={handleAddFormChange}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Outlined"
-            variant="outlined"
-            name="price"
-            type="text"
-            onChange={handleAddFormChange}
-          />
-          {/* <button type="submit">Add</button> */}
-          <Button variant="outlined" type="submit">
-            Add
-          </Button>
-        </form>
-        {/* </Box> */}
-      </Box>
-      {/*  */}
-      <TabPanel value={value} index={0}>
-        {/*  */}
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="caption table">
-            <caption>A basic table example with a caption</caption>
-            {/*  */}
-            <form>
-              <TableHead>
-                <TableRow>
-                  <TableCell style={Tsize}>عکس محصول</TableCell>
-                  <TableCell align="center" style={Tsize}>
-                    نام محصول
-                  </TableCell>
-                  <TableCell align="right" style={Tsize}>
-                    توضیحات
-                  </TableCell>
-                  <TableCell align="right" style={Tsize}>
-                    قیمت محصول
-                  </TableCell>
-                  <TableCell align="right" style={Tsize}>
-                    عملیات
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              {/*  */}
-              <TableBody>
-                <Fragment>
-                  {products.map((row) => (
-                    <TableRow key={row.id}>
-                      <TableCell component="th" scope="row" style={size}>
-                        <img
-                          style={imgSize}
-                          src={`${row.thumbnail}`}
-                          alt={`${row.title}`}
-                        />
-                      </TableCell>
-                      <TableCell align="center" style={size}>
-                        {row.title}
-                      </TableCell>
-                      <TableCell component="th" scope="row">
-        <TextField
-          id="standard-basic"
-          label="Standard"
-          variant="standard"
-          value={editFormData.title}
-          type="text"
-          onChange={handleEditFormChange}
-        />
-                      <TableCell align="right" style={tdWidth}>
-                        {row.description}
-                      </TableCell>
-                      <TableCell align="right" style={size}>
-                        {row.price}
-                      </TableCell>
-                      <TableCell align="right" style={size}>
-                        <button>add</button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                  <EditableRow products={products} />
-                </Fragment>
-              </TableBody>
-            </form>
-            <Pagination
-              count={totalProductPages}
-              page={currentProductPage}
-              onChange={(e, page) => {
-                setCurrentProductPage(page);
-                getProducts(page);
-              }}
-              color="info"
-            />
-            {/*  */}
-          </Table>
-        </TableContainer>
-        {/*  */}
-      </TabPanel>
-      {/*  */}
-      <TabPanel value={value} index={1}>
-        {/*  */}
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="caption table">
-            <caption>A basic table example with a caption</caption>
-            {/* <caption>A basic table example with a caption</caption> */}
-            <TableHead>
-              <TableRow>
-                <TableCell style={Tsize}>عکس محصول</TableCell>
-                <TableCell align="center" style={Tsize}>
-                  نام محصول
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  برند
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  موجودیت
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  قیمت محصول
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  عملیات
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            {/*  */}
-            <TableBody>
-              {products.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell component="th" scope="row" style={size}>
-                    <img
-                      style={imgSize}
-                      src={`${row.thumbnail}`}
-                      alt={`${row.title}`}
-                    />
-                  </TableCell>
-                  <TableCell align="center" style={size}>
-                    {row.title}
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    {row.brand}
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    {row.stock}
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    {row.price}
-                  </TableCell>
-                  <TableCell align="right" style={size}>
-                    <button>add</button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            {/*  */}
-          </Table>
-          <Pagination
-            count={totalProductPages}
-            page={currentProductPage}
-            onChange={(e, page) => {
-              setCurrentProductPage(page);
-              getProducts(page);
-            }}
-            color="info"
-          />
-        </TableContainer>
-        {/*  */}
-      </TabPanel>
-      {/*  */}
-      <TabPanel value={value} index={2}>
-        {/*  */}
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="caption table">
-            <caption>Add Delete Edit</caption>
-            <TableHead>
-              {/*  */}
 
-              <TableRow>
-                <TableCell style={Tsize}>Dessert (100g serving)</TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Calories
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Fat&nbsp;(g)
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Carbs&nbsp;(g)
-                </TableCell>
-                <TableCell align="right" style={Tsize}>
-                  Protein&nbsp;(g)
-                </TableCell>
-              </TableRow>
-              {/*  */}
-            </TableHead>
-          </Table>
-        </TableContainer>
-        {/*  */}
-      </TabPanel>
-      {/*  */}
-    </Box>
+  //////////////
+
+  return (
+
+    <div className="app-container">
+      <form onSubmit={handleEditFormSubmit}>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((contact) => (
+              <Fragment>
+                {editContactId === contact.id ? (
+                  <EditableRow
+                    editFormData={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    handleCancelClick={handleCancelClick}
+                  />
+                ) : (
+                  <ReadOnlyRow
+                    contact={contact}
+                    handleEditClick={handleEditClick}
+                    handleDeleteClick={handleDeleteClick}
+                  />
+                )}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </form>
+
+      <h2>Add a Contact</h2>
+      <form onSubmit={handleAddFormSubmit}>
+        <input
+          type="text"
+          name="fullName"
+          required="required"
+          placeholder="Enter a name..."
+          onChange={handleAddFormChange}
+        />
+        <input
+          type="text"
+          name="address"
+          required="required"
+          placeholder="Enter an addres..."
+          onChange={handleAddFormChange}
+        />
+        <input
+          type="text"
+          name="phoneNumber"
+          required="required"
+          placeholder="Enter a phone number..."
+          onChange={handleAddFormChange}
+        />
+        <input
+          type="email"
+          name="email"
+          required="required"
+          placeholder="Enter an email..."
+          onChange={handleAddFormChange}
+        />
+        <button type="submit">Add</button>
+      </form>
+    </div>
   );
 }

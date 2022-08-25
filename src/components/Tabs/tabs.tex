@@ -1,0 +1,256 @@
+ <Box
+   sx={{
+     width: "100%",
+     backgroundColor: "secondary",
+     paddingLeft: "20px",
+     paddingRight: "20px",
+     bgcolor: "secondary",
+   }}
+ >
+   <Box
+     sx={{
+       border: 1,
+       borderColor: "divider",
+       display: "flex",
+       justifyContent: "center",
+       padding: "30px 10px",
+       backgroundColor: "secondary",
+     }}
+   >
+     <Tabs
+       value={value}
+       onChange={handleChange}
+       aria-label="basic tabs example"
+     >
+       <Tab label="محصولات" style={size} {...a11yProps(0)} />
+       <Tab label="موجودیت" style={size} {...a11yProps(1)} />
+       <Tab label="سشفارشات" style={size} {...a11yProps(2)} />
+     </Tabs>
+   </Box>
+   <Box
+     sx={{
+       width: "90%",
+       display: "flex",
+       alignItems: "center",
+     }}
+   >
+     {/* <Box
+       component="form"
+       sx={{
+         "& > :not(style)": { m: 1 },
+       }}
+       noValidate
+       autoComplete="off"
+     > */}
+     <form onSubmit={handleAddFormSubmit}>
+       <TextField
+         id="outlined-basic"
+         label="Outlined"
+         variant="outlined"
+         name="  "
+         type="text"
+         onChange={handleAddFormChange}
+       />
+       <TextField
+         id="outlined-basic"
+         label="Outlined"
+         variant="outlined"
+         name="description"
+         type="text"
+         onChange={handleAddFormChange}
+       />
+       <TextField
+         id="outlined-basic"
+         label="Outlined"
+         variant="outlined"
+         name="price"
+         type="text"
+         onChange={handleAddFormChange}
+       />
+       {/* <button type="submit">Add</button> */}
+       <Button variant="outlined" type="submit">
+         Add
+       </Button>
+     </form>
+     {/* </Box> */}
+   </Box>
+   {/*  */}
+   <TabPanel value={value} index={0}>
+     {/*  */}
+     <TableContainer component={Paper}>
+       <Table sx={{ minWidth: 650 }} aria-label="caption table">
+         <caption>A basic table example with a caption</caption>
+         {/*  */}
+         {/* <form> */}
+         <TableHead>
+           <TableRow>
+             <TableCell style={Tsize}>عکس محصول</TableCell>
+             <TableCell align="center" style={Tsize}>
+               نام محصول
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               توضیحات
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               قیمت محصول
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               عملیات
+             </TableCell>
+           </TableRow>
+         </TableHead>
+         {/*  */}
+         <TableBody>
+           {/* <Fragment> */}
+           {products.map((row) => (
+             <TableRow key={row.id}>
+               <TableCell component="th" scope="row" style={size}>
+                 <img
+                   style={imgSize}
+                   src={`${row.thumbnail}`}
+                   alt={`${row.title}`}
+                 />
+               </TableCell>
+               <TableCell align="center" style={size}>
+                 {row.title}
+               </TableCell>
+               <TableCell component="th" scope="row">
+                 <TextField
+                   id="standard-basic"
+                   label="Standard"
+                   variant="standard"
+                   value={editFormData.title}
+                   type="text"
+                   onChange={handleEditFormChange}
+                 />
+               </TableCell>
+               <TableCell align="right" style={tdWidth}>
+                 {row.description}
+               </TableCell>
+               <TableCell align="right" style={size}>
+                 {row.price}
+               </TableCell>
+               <TableCell align="right" style={size}>
+                 <button>add</button>
+               </TableCell>
+             </TableRow>
+           ))}
+           <EditableRow products={products} />
+           {/* </Fragment> */}
+         </TableBody>
+         {/* </form> */}
+         <Pagination
+           count={totalProductPages}
+           page={currentProductPage}
+           onChange={(e, page) => {
+             setCurrentProductPage(page);
+             getProducts(page);
+           }}
+           color="info"
+         />
+         {/*  */}
+       </Table>
+     </TableContainer>
+     {/*  */}
+   </TabPanel>
+   {/*  */}
+   <TabPanel value={value} index={1}>
+     {/*  */}
+     <TableContainer component={Paper}>
+       <Table sx={{ minWidth: 650 }} aria-label="caption table">
+         <caption>A basic table example with a caption</caption>
+         {/* <caption>A basic table example with a caption</caption> */}
+         <TableHead>
+           <TableRow>
+             <TableCell style={Tsize}>عکس محصول</TableCell>
+             <TableCell align="center" style={Tsize}>
+               نام محصول
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               برند
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               موجودیت
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               قیمت محصول
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               عملیات
+             </TableCell>
+           </TableRow>
+         </TableHead>
+         {/*  */}
+         <TableBody>
+           {products.map((row) => (
+             <TableRow key={row.id}>
+               <TableCell component="th" scope="row" style={size}>
+                 <img
+                   style={imgSize}
+                   src={`${row.thumbnail}`}
+                   alt={`${row.title}`}
+                 />
+               </TableCell>
+               <TableCell align="center" style={size}>
+                 {row.title}
+               </TableCell>
+               <TableCell align="right" style={size}>
+                 {row.brand}
+               </TableCell>
+               <TableCell align="right" style={size}>
+                 {row.stock}
+               </TableCell>
+               <TableCell align="right" style={size}>
+                 {row.price}
+               </TableCell>
+               <TableCell align="right" style={size}>
+                 <button>add</button>
+               </TableCell>
+             </TableRow>
+           ))}
+         </TableBody>
+         {/*  */}
+       </Table>
+       <Pagination
+         count={totalProductPages}
+         page={currentProductPage}
+         onChange={(e, page) => {
+           setCurrentProductPage(page);
+           getProducts(page);
+         }}
+         color="info"
+       />
+     </TableContainer>
+     {/*  */}
+   </TabPanel>
+   {/*  */}
+   <TabPanel value={value} index={2}>
+     {/*  */}
+     <TableContainer component={Paper}>
+       <Table sx={{ minWidth: 650 }} aria-label="caption table">
+         <caption>Add Delete Edit</caption>
+         <TableHead>
+           {/*  */
+           <TableRow>
+             <TableCell style={Tsize}>Dessert (100g serving)</TableCell>
+             <TableCell align="right" style={Tsize}>
+               Calories
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               Fat&nbsp;(g)
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               Carbs&nbsp;(g)
+             </TableCell>
+             <TableCell align="right" style={Tsize}>
+               Protein&nbsp;(g)
+             </TableCell>
+           </TableRow>
+           {/*  */}
+         </TableHead>
+       </Table>
+     </TableContainer>
+     {/*  */}
+   </TabPanel>
+   {/*  */}
+ </Box>
