@@ -42,7 +42,7 @@ const Category = () => {
       }}
     >
       {/* <Typography variant="h1" gutterBottom> */}
-      {category}.
+      {/* {category}. */}
       {products.map((products) => (
         <Card sx={{ maxWidth: 345 }}>
           <CardActionArea>

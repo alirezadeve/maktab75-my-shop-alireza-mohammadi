@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Grid,
   Paper,
@@ -9,6 +9,8 @@ import {
   Typography,
   // Link,
   Checkbox,
+  Link,
+  Box,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -21,9 +23,15 @@ const Login = () => {
     margin: "20px auto",
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
-  const btnstyle = { margin: "20px 0", height: "50px", fontSize: "large" };
-  const linkstyle = { margin: "20px 0" };
-  const fonstsize = { fonstsize: "large" };
+  const btnstyle = {
+    margin: "20px 0",
+    height: "50px",
+    fontSize: "large",
+    textDecoration: "none",
+  };
+  const linkstyle = { margin: "20px 0", textDecoration: "none" };
+  const fonstsize = { fontSize: "large", textDecoration: "none" };
+  const fonstsize2 = { textDecoration: "none" };
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
@@ -51,24 +59,27 @@ const Login = () => {
           control={<Checkbox name="checkedB" color="primary" />}
           label="مرا به یاد بسپار"
         />
-        <Link to="/admin">
-          <Button
-            // type="submit"
-            color="primary"
-            variant="contained"
-            style={btnstyle}
-            fullWidth
-          >
-            ورود
-          </Button>
-        </Link>
-        <Typography style={btnstyle}>
-          <Link to="/">فراموشی رمز عبور؟</Link>
-        </Typography>
-        <Typography>
-          {" "}
-          ایا شما اکانتی دارین ؟<Link to="/">ورود کن جوون</Link>
-        </Typography>
+        {/* <Link to="/admin"> */}
+        <Button
+          // type="submit"
+          color="primary"
+          variant="contained"
+          style={btnstyle}
+          fullWidth
+          component={RouterLink}
+          to="/admin"
+        >
+          ورود
+        </Button>
+        {/* </Link> */}
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <Typography style={fonstsize} component={RouterLink} to="/">
+            فراموشی رمز عبور؟
+          </Typography>
+          <Typography style={fonstsize2} component={RouterLink} to="/">
+            ایا شما اکانتی دارین ؟ کن جوون
+          </Typography>
+        </Box>
       </Paper>
     </Grid>
   );
