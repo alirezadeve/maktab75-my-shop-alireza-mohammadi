@@ -7,7 +7,8 @@ export default function AdminLayout() {
     <>
       <Header />
 
-      <h1>Admin Tabs</h1>
+      {/* <adminMenu /> */}
+
       <Outlet />
     </>
   );

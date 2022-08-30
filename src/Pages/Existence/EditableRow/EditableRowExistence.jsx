@@ -7,6 +7,7 @@ const EditableRow = ({
   handleCancelClick,
 }) => {
   const stile = { width: "90%" };
+
   return (
     <TableRow>
       <TableCell>
@@ -53,7 +54,27 @@ const EditableRow = ({
           onChange={handleEditFormChange}
         ></TextField>
       </TableCell>
-      <TableCell sx={{ display: "flex" }}>
+      <TableCell>
+        <TextField
+          type="text"
+          // required="required"
+          placeholder="تعداد جدید..."
+          name="stock"
+          value={editFormData.stock}
+          onChange={handleEditFormChange}
+        ></TextField>
+      </TableCell>
+      <TableCell>
+        <TextField
+          type="text"
+          // required="required"
+          placeholder="تخفیف جدید..."
+          name="rating"
+          value={editFormData.rating}
+          onChange={handleEditFormChange}
+        ></TextField>
+      </TableCell>
+      <TableCell>
         <Button variant="outlined" type="submit">
           Save
         </Button>

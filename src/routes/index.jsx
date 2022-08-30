@@ -3,6 +3,7 @@ import AdminLayout from "layouts/adminLayout";
 import HomeLayout from "layouts/homeLayout";
 import { Admin } from "Pages";
 import Category from "Pages/Category/Category";
+import Existence from "Pages/Existence/Existence";
 import Home from "Pages/Home";
 import PDP from "Pages/PDP/PDP";
 // import Login from "Pages/Login/Login";
@@ -22,6 +23,7 @@ export default function MyRoutes() {
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Admin />} />
+        <Route path="existence" element={<Existence />} />
       </Route>
     </Routes>
   );

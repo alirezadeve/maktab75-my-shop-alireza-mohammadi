@@ -9,6 +9,7 @@ export { default as Logo } from "./Logo/Logo.component";
 export { default as Takhfif } from "./Logo/takhfif";
 export { default as HeaderCounter } from "./Counter/HeaderCounter";
 export { default as Menu } from "./Menu/Menu";
+export { default as adminMenu } from "./Menu/AdminMenu";
 export { default as Slider } from "./Slider/slider";
 // export { default as HelperTextMisaligned } from "./Input/LoginInput";
 export { default as Login } from "./Login/login";

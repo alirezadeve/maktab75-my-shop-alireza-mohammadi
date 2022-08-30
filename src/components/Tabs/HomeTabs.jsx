@@ -18,6 +18,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { BasicModal } from "components";
 const Line = { textDecoration: "none" };
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -84,6 +85,11 @@ export default function BasicTabs() {
   useEffect(() => {
     getProducts();
   }, []);
+  //////////////////////////////////////
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Box sx={{ width: "100%", padding: "30px" }}>
       <Box sx={{ width: "100", padding: "30px", display: "flex" }}>
@@ -141,10 +147,10 @@ export default function BasicTabs() {
                 <Button
                   variant="outlined"
                   onClick={() => {
-                    // handleModalOpen();
+                    <BasicModal handleModalOpen={handleOpen} />;
                   }}
                 >
-                  Primary
+                  mimi
                 </Button>
               </CardActions>
             </Card>
@@ -269,7 +275,7 @@ export default function BasicTabs() {
                 <Button
                   variant="outlined"
                   onClick={() => {
-                    // handleModalOpen();
+                    // ();
                   }}
                 >
                   Primary

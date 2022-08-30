@@ -1,3 +1,4 @@
+// import React from "react";
 // import * as React from "react";
 import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
@@ -15,11 +16,16 @@ import TableRow from "@mui/material/TableRow";
 import { nanoid } from "nanoid";
 // import { adminMenu } from "../index";
 
-import { BasicModal, PaginationSize } from "components";
+import { PaginationSize } from "components";
 import axios from "axios";
-import EditableRow from "components/EditableRow/EditableRow ";
-import ReadOnlyRow from "components/ReadOnlyRow/ReadOnlyRow";
+// import EditableRow from "components/EditableRow/EditableRow ";
+// import ReadOnlyRow from "components/ReadOnlyRow/ReadOnlyRow";
 import AdminMenu from "components/Menu/AdminMenu";
+import EditableRow from "./EditableRow/EditableRowExistence";
+import ReadOnlyRow from "./ReadOnlyRow/ReadOnlyRowExistence";
+import { useParams } from "react-router-dom";
+// import EditableRow from "./EditableRow/EditableRowExistence";
+// import ReadOnlyRow from "./ReadOnlyRow/ReadOnlyRowExistence";
 // import { AdminMenu } from "components/Menu/AdminMenu";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -65,7 +71,7 @@ const rows = [
   createData("Cupcake", 305, 3.7, 67, 4.3),
   createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
-export default function BasicTabs() {
+const Existence = () => {
   const [products, setProducts] = useState([]);
   const [totalProductPages, setTotalProductPages] = useState(1);
   const [currentProductPage, setCurrentProductPage] = useState(1);
@@ -196,99 +202,22 @@ export default function BasicTabs() {
       console.log(error);
     }
   };
-
+  const { existence } = useParams();
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [existence]);
 
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const size = { fontSize: "14px" };
-  const tdWidth = { width: "37%", fontSize: "14px" };
   const Tsize = { fontSize: "18px" };
-  const imgSize = { width: "50px" };
-  const flex = { display: "flex", justifyContent: "center" };
-
-  //////////////
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  //////////////
 
   return (
     <div className="app-container">
-      <Box sx={{ display: "flex", justifyContent: "space-between", px: "20" }}>
-        <AdminMenu />
-        <Box
-          component="form"
-          noValidate
-          autoComplete="off"
-          onSubmit={handleAddFormSubmit}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            // flexWrap: "wrap",
-            gap: "20px",
-          }}
-          // style={flex}
-        >
-          <TextField
-            type="text"
-            name="title"
-            // required="required"
-            id="outlined-textarea"
-            label="نام جدید..."
-            // placeholder="Placeholder"
-            multiline
-            placeholder="نام محصول..."
-            onChange={handleAddFormChange}
-          />
-          <TextField
-            type="text"
-            name="description"
-            id="outlined-textarea"
-            label="توضیحات جدید..."
-            // required="required"
-            placeholder="توضیحات محصول..."
-            onChange={handleAddFormChange}
-          />
-          <TextField
-            type="text"
-            name="price"
-            id="outlined-textarea"
-            label="قیمت جدید..."
-            // required="required"
-            placeholder="قیمت محصول..."
-            onChange={handleAddFormChange}
-          />
-          {/* <input
-          type="email"
-          name="email"
-          required="required"
-          placeholder="Enter an email..."
-          onChange={handleAddFormChange}
-        /> */}
-          <Button
-            variant="outlined"
-            type="submit"
-            sx={{ mr: "10px" }}
-            onClick={handleOpen}
-          >
-            ذخیره
-          </Button>
-        </Box>
-        <BasicModal open={open} handleClose={handleClose} />
-      </Box>
-      <Box
-        component="form"
-        noValidate
-        autoComplete="off"
-        sx={{ my: "10px" }}
-        onSubmit={handleEditFormSubmit}
-      >
+      <AdminMenu />
+      <form onSubmit={handleEditFormSubmit}>
         <table sx={{ width: "100%" }}>
           <TableHead>
             {/* <tr> */}
@@ -298,14 +227,20 @@ export default function BasicTabs() {
             </TableCell>
             <TableCell align="right" style={Tsize}>
               توضیحات
-            </TableCell>
+            </TableCell>{" "}
             <TableCell align="right" style={Tsize}>
               قیمت محصول
             </TableCell>
             <TableCell align="right" style={Tsize}>
+              تعداد
+            </TableCell>
+            <TableCell align="right" style={Tsize}>
+              تخفیف{" "}
+            </TableCell>
+            <TableCell align="right" style={Tsize}>
               عملیات
             </TableCell>
-            {/* </tr>tdWidth */}
+            {/* </tr> */}
           </TableHead>
           <tbody>
             {products.map((products) => (
@@ -327,49 +262,27 @@ export default function BasicTabs() {
             ))}
           </tbody>
         </table>
-      </Box>
+      </form>
 
-      <Typography variant="h3" gutterBottom>
-        Add a Contact
-      </Typography>
-      <Box
-        component="form"
-        noValidate
-        autoComplete="off"
-        onSubmit={handleAddFormSubmit}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          // flexWrap: "wrap",
-          gap: "20px",
-        }}
-        // style={flex}
-      >
-        <TextField
+      <h2>Add a Contact</h2>
+      <form onSubmit={handleAddFormSubmit}>
+        <input
           type="text"
           name="title"
           // required="required"
-          id="outlined-textarea"
-          label="نام جدید..."
-          // placeholder="Placeholder"
-          multiline
           placeholder="نام محصول..."
           onChange={handleAddFormChange}
         />
-        <TextField
+        <input
           type="text"
           name="description"
-          id="outlined-textarea"
-          label="توضیحات جدید..."
           // required="required"
           placeholder="توضیحات محصول..."
           onChange={handleAddFormChange}
         />
-        <TextField
+        <input
           type="text"
           name="price"
-          id="outlined-textarea"
-          label="قیمت جدید..."
           // required="required"
           placeholder="قیمت محصول..."
           onChange={handleAddFormChange}
@@ -381,20 +294,8 @@ export default function BasicTabs() {
           placeholder="Enter an email..."
           onChange={handleAddFormChange}
         /> */}
-        <Button
-          variant="outlined"
-          type="submit"
-          sx={{ mr: "10px" }}
-          onClick={() => {
-            // <BasicModal
-            // modalOpen={handleOpen()}
-            // onClick={() => <BasicModal />}
-            // />;
-          }}
-        >
-          ذخیره
-        </Button>
-      </Box>
+        <button type="submit">Add</button>
+      </form>
       <Box sx={{ width: "100", padding: "30px", display: "flex" }}>
         <Pagination
           size="large"
@@ -409,4 +310,6 @@ export default function BasicTabs() {
       </Box>
     </div>
   );
-}
+};
+
+export default Existence;

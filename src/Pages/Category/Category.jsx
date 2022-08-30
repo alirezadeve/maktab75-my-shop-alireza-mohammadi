@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
+import { BasicModal } from "components";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import Typography from "@mui/material/Typography";
@@ -33,6 +34,10 @@ const Category = () => {
   useEffect(() => {
     getProducts();
   }, [category]);
+  ///////////////////////////////////////////////
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <Box
       sx={{
@@ -76,9 +81,10 @@ const Category = () => {
               variant="outlined"
               onClick={() => {
                 // handleModalOpen();
+                <BasicModal handleModalOpen={handleOpen} />;
               }}
             >
-              Primary
+              mimi
             </Button>
           </CardActions>
         </Card>

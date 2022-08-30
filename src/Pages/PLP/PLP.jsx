@@ -1,5 +1,5 @@
-import { ActionAreaCard, TabPanel } from 'components'
-import React from 'react'
+import { ActionAreaCard, TabPanel } from "components";
+import React from "react";
 
 const PLP = () => {
   return (
@@ -7,7 +7,7 @@ const PLP = () => {
       {/* <ActionAreaCard /> */}
       <TabPanel />
     </div>
-  )
-}
+  );
+};
 
-export default PLP
+export default PLP;

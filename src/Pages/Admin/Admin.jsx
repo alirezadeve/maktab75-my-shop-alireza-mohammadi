@@ -5,6 +5,7 @@ import React from "react";
 export default function Admin() {
   return (
     <Grid sx={{ display: "flex", justifyContent: "center" }}>
+      <adminMenu />
       <LabTabs />
     </Grid>
   );
