@@ -16,10 +16,10 @@ import TableRow from "@mui/material/TableRow";
 import { nanoid } from "nanoid";
 // import { adminMenu } from "../index";
 
-import { PaginationSize } from "components";
+import { PaginationSize, editeModal, BasicModal } from "components";
 import axios from "axios";
 // import EditableRow from "components/EditableRow/EditableRow ";
-// import ReadOnlyRow from "components/ReadOnlyRow/ReadOnlyRow";
+// import   OnlyRow from "components/ReadOnlyRow/ReadOnlyRow";
 import AdminMenu from "components/Menu/AdminMenu";
 import EditableRow from "./EditableRow/EditableRowExistence";
 import ReadOnlyRow from "./ReadOnlyRow/ReadOnlyRowExistence";
@@ -213,10 +213,73 @@ const Existence = () => {
     setValue(newValue);
   };
   const Tsize = { fontSize: "18px" };
-
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <div className="app-container">
-      <AdminMenu />
+      <Box sx={{ display: "flex", justifyContent: "space-between", px: "20" }}>
+        <AdminMenu />
+        <Box
+          component="form"
+          noValidate
+          autoComplete="off"
+          onSubmit={handleAddFormSubmit}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            // flexWrap: "wrap",
+            gap: "20px",
+          }}
+          // style={flex}
+        >
+          <TextField
+            type="text"
+            name="title"
+            // required="required"
+            id="outlined-textarea"
+            label="نام جدید..."
+            // placeholder="Placeholder"
+            multiline
+            placeholder="نام محصول..."
+            onChange={handleAddFormChange}
+          />
+          <TextField
+            type="text"
+            name="description"
+            id="outlined-textarea"
+            label="توضیحات جدید..."
+            // required="required"
+            placeholder="توضیحات محصول..."
+            onChange={handleAddFormChange}
+          />
+          <TextField
+            type="text"
+            name="price"
+            id="outlined-textarea"
+            label="قیمت جدید..."
+            // required="required"
+            placeholder="قیمت محصول..."
+            onChange={handleAddFormChange}
+          />
+          {/* <input
+          type="email"
+          name="email"
+          required="required"
+          placeholder="Enter an email..."
+          onChange={handleAddFormChange}
+        /> */}
+          <Button
+            variant="outlined"
+            type="submit"
+            sx={{ mr: "10px" }}
+            onClick={handleOpen}
+          >
+            ذخیره
+          </Button>
+        </Box>
+        <BasicModal open={open} handleClose={handleClose} />
+      </Box>
       <form onSubmit={handleEditFormSubmit}>
         <table sx={{ width: "100%" }}>
           <TableHead>
@@ -245,6 +308,7 @@ const Existence = () => {
           <tbody>
             {products.map((products) => (
               <Fragment>
+                <editeModal />
                 {editProductsId === products.id ? (
                   <EditableRow
                     editFormData={editFormData}
@@ -264,38 +328,6 @@ const Existence = () => {
         </table>
       </form>
 
-      <h2>Add a Contact</h2>
-      <form onSubmit={handleAddFormSubmit}>
-        <input
-          type="text"
-          name="title"
-          // required="required"
-          placeholder="نام محصول..."
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="text"
-          name="description"
-          // required="required"
-          placeholder="توضیحات محصول..."
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="text"
-          name="price"
-          // required="required"
-          placeholder="قیمت محصول..."
-          onChange={handleAddFormChange}
-        />
-        {/* <input
-          type="email"
-          name="email"
-          required="required"
-          placeholder="Enter an email..."
-          onChange={handleAddFormChange}
-        /> */}
-        <button type="submit">Add</button>
-      </form>
       <Box sx={{ width: "100", padding: "30px", display: "flex" }}>
         <Pagination
           size="large"

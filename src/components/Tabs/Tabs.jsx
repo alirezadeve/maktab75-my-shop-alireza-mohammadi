@@ -76,6 +76,7 @@ export default function BasicTabs() {
     price: "",
     // email: "",
   });
+  
 
   const [editFormData, setEditFormData] = useState({
     title: "",
@@ -177,7 +178,13 @@ export default function BasicTabs() {
 
     setProducts(newProducts);
   };
-
+  const postProducts = async () => {
+    try {
+      const res = await axios.post(`http://localhost:3001/products`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const getProducts = async (page) => {
     try {
       const res = await axios.get(
@@ -329,72 +336,6 @@ export default function BasicTabs() {
         </table>
       </Box>
 
-      <Typography variant="h3" gutterBottom>
-        Add a Contact
-      </Typography>
-      <Box
-        component="form"
-        noValidate
-        autoComplete="off"
-        onSubmit={handleAddFormSubmit}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          // flexWrap: "wrap",
-          gap: "20px",
-        }}
-        // style={flex}
-      >
-        <TextField
-          type="text"
-          name="title"
-          // required="required"
-          id="outlined-textarea"
-          label="نام جدید..."
-          // placeholder="Placeholder"
-          multiline
-          placeholder="نام محصول..."
-          onChange={handleAddFormChange}
-        />
-        <TextField
-          type="text"
-          name="description"
-          id="outlined-textarea"
-          label="توضیحات جدید..."
-          // required="required"
-          placeholder="توضیحات محصول..."
-          onChange={handleAddFormChange}
-        />
-        <TextField
-          type="text"
-          name="price"
-          id="outlined-textarea"
-          label="قیمت جدید..."
-          // required="required"
-          placeholder="قیمت محصول..."
-          onChange={handleAddFormChange}
-        />
-        {/* <input
-          type="email"
-          name="email"
-          required="required"
-          placeholder="Enter an email..."
-          onChange={handleAddFormChange}
-        /> */}
-        <Button
-          variant="outlined"
-          type="submit"
-          sx={{ mr: "10px" }}
-          onClick={() => {
-            // <BasicModal
-            // modalOpen={handleOpen()}
-            // onClick={() => <BasicModal />}
-            // />;
-          }}
-        >
-          ذخیره
-        </Button>
-      </Box>
       <Box sx={{ width: "100", padding: "30px", display: "flex" }}>
         <Pagination
           size="large"

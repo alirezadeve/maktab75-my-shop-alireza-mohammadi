@@ -36,7 +36,7 @@ const AdminMenu = () => {
         variant="outlined"
         size="large"
         component={RouterLink}
-        to="admin"
+        to="/admin/products"
       >
         محصولات
       </Button>
@@ -47,7 +47,7 @@ const AdminMenu = () => {
         variant="outlined"
         size="large"
         component={RouterLink}
-        to="existence"
+        to="/admin/existence"
       >
         موجودیت
       </Button>

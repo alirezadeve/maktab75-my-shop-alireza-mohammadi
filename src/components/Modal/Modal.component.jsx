@@ -60,7 +60,7 @@ export default function BasicModal({ open, handleClose }) {
           </Typography> */}
         <Grid>
           <Paper elevation={10} style={paperStyle}>
-            <Grid align="center">
+            {/* <Grid align="center">
               <Avatar style={avatarStyle}>
                 <LockOutlinedIcon />
               </Avatar>
@@ -91,6 +91,18 @@ export default function BasicModal({ open, handleClose }) {
               fullWidth
             >
               Sign in
+            </Button> */}
+            <Typography variant="h4" gutterBottom>
+              ایا از اطلاعات وارد شده اطمینان دارین
+            </Typography>
+            <Button
+              onClick={handleClose}
+              color="secondary"
+              variant="contained"
+              style={btnstyle}
+              fullWidth
+            >
+              بلی
             </Button>
             <Button
               onClick={handleClose}
@@ -99,16 +111,16 @@ export default function BasicModal({ open, handleClose }) {
               style={btnstyle}
               fullWidth
             >
-              Cancel
+              خیر
             </Button>
 
-            <Typography style={btnstyle}>
+            {/* <Typography style={btnstyle}>
               <Link href="#">فراموشی رمز عبور؟</Link>
             </Typography>
             <Typography>
               {" "}
               ایا شما اکانتی دارین ؟<Link href="#">ورود کن جوون</Link>
-            </Typography>
+            </Typography> */}
           </Paper>
         </Grid>
         {/* </Box> */}

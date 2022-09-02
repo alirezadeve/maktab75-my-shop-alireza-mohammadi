@@ -4,6 +4,7 @@ export * from "./Input/Input.component";
 export * from "./Todo/Todo.component";
 export { default as ActionAreaCard } from "./Card/Card.components";
 export { default as BasicModal } from "./Modal/Modal.component";
+export { default as editeModal } from "./Modal/editeModal";
 export { default as CustomizedInputBase } from "./searchBar/searchBar.component";
 export { default as Logo } from "./Logo/Logo.component";
 export { default as Takhfif } from "./Logo/takhfif";

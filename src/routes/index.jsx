@@ -1,4 +1,5 @@
 import { Login } from "components";
+import BasicTabs from "components/Tabs/Tabs";
 import AdminLayout from "layouts/adminLayout";
 import HomeLayout from "layouts/homeLayout";
 import { Admin } from "Pages";
@@ -23,6 +24,7 @@ export default function MyRoutes() {
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Admin />} />
+        <Route path="products" element={<BasicTabs />} />
         <Route path="existence" element={<Existence />} />
       </Route>
     </Routes>
