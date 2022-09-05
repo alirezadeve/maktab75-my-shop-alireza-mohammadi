@@ -17,7 +17,7 @@ import images from "../../images/camel-logo.png";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link, Link as RouterLink } from "react-router-dom";
 import { BasicModal } from "components";
 const Line = { textDecoration: "none" };
 function TabPanel(props) {
@@ -114,7 +114,7 @@ export default function BasicTabs() {
         }}
       >
         {products
-          .filter((product) => product.category.includes("laptops"))
+          .filter((product) => product?.category?.includes?.("laptops"))
           .map((laptops) => (
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
@@ -146,11 +146,10 @@ export default function BasicTabs() {
               <CardActions>
                 <Button
                   variant="outlined"
-                  onClick={() => {
-                    <BasicModal handleModalOpen={handleOpen} />;
-                  }}
+                  component={Link}
+                  to={`/product/${laptops.id}`}
                 >
-                  mimi
+                  جزئیات
                 </Button>
               </CardActions>
             </Card>
@@ -178,7 +177,7 @@ export default function BasicTabs() {
         }}
       >
         {products
-          .filter((product) => product.category.includes("smartphones"))
+          .filter((product) => product?.category?.includes?.("smartphones"))
           .map((smartphones) => (
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
@@ -210,11 +209,10 @@ export default function BasicTabs() {
               <CardActions>
                 <Button
                   variant="outlined"
-                  onClick={() => {
-                    // handleModalOpen();
-                  }}
+                  component={Link}
+                  to={`/product/${smartphones.id}`}
                 >
-                  Primary
+                  جزئیات
                 </Button>
               </CardActions>
             </Card>
@@ -242,7 +240,7 @@ export default function BasicTabs() {
         }}
       >
         {products
-          .filter((product) => product.category.includes("fragrances"))
+          .filter((product) => product?.category?.includes?.("fragrances"))
           .map((fragrances) => (
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
@@ -274,11 +272,10 @@ export default function BasicTabs() {
               <CardActions>
                 <Button
                   variant="outlined"
-                  onClick={() => {
-                    // ();
-                  }}
+                  component={Link}
+                  to={`/product/${fragrances.id}`}
                 >
-                  Primary
+                  جزئیات
                 </Button>
               </CardActions>
             </Card>
@@ -306,7 +303,7 @@ export default function BasicTabs() {
         }}
       >
         {products
-          .filter((product) => product.category.includes("skincare"))
+          .filter((product) => product?.category?.includes?.("skincare"))
           .map((skincare) => (
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
@@ -338,9 +335,8 @@ export default function BasicTabs() {
               <CardActions>
                 <Button
                   variant="outlined"
-                  onClick={() => {
-                    // handleModalOpen();
-                  }}
+                  component={Link}
+                  to={`/product/${skincare.id}`}
                 >
                   Primary
                 </Button>
@@ -370,7 +366,7 @@ export default function BasicTabs() {
         }}
       >
         {products
-          .filter((product) => product.category.includes("groceries"))
+          .filter((product) => product?.category?.includes?.("groceries"))
           .map((groceries) => (
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
@@ -402,11 +398,10 @@ export default function BasicTabs() {
               <CardActions>
                 <Button
                   variant="outlined"
-                  onClick={() => {
-                    // handleModalOpen();
-                  }}
+                  component={Link}
+                  to={`/product/${groceries.id}`}
                 >
-                  Primary
+                  جزئیات
                 </Button>
               </CardActions>
             </Card>
@@ -434,7 +429,7 @@ export default function BasicTabs() {
         }}
       >
         {products
-          .filter((product) => product.category.includes("homeDecoration"))
+          .filter((product) => product?.category?.includes?.("homeDecoration"))
           .map((homeDecoration) => (
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
@@ -466,11 +461,10 @@ export default function BasicTabs() {
               <CardActions>
                 <Button
                   variant="outlined"
-                  onClick={() => {
-                    // handleModalOpen();
-                  }}
+                  component={Link}
+                  to={`/product/${homeDecoration.id}`}
                 >
-                  Primary
+                  جزئیات
                 </Button>
               </CardActions>
             </Card>

@@ -84,7 +84,7 @@ const Category = () => {
                 <BasicModal handleModalOpen={handleOpen} />;
               }}
             >
-              mimi
+              ding
             </Button>
           </CardActions>
         </Card>

@@ -76,7 +76,6 @@ export default function BasicTabs() {
     price: "",
     // email: "",
   });
-  
 
   const [editFormData, setEditFormData] = useState({
     title: "",
@@ -126,7 +125,7 @@ export default function BasicTabs() {
     setProducts(newProducts);
   };
 
-  const handleEditFormSubmit = (event) => {
+  const handleEditFormSubmit = (event, product) => {
     event.preventDefault();
 
     const editedProducts = {
@@ -145,18 +144,28 @@ export default function BasicTabs() {
 
     newProducts[index] = editedProducts;
 
+    axios.put(
+      `http://localhost:3001/products/${editProductsId}`,
+      editedProducts
+    );
+
     setProducts(newProducts);
     setEditProductsId(null);
   };
 
-  const handleEditClick = (event, products) => {
+  const getId = products.findIndex(
+    (products) => products.id === editProductsId
+  );
+  // console.log(getId);
+
+  const handleEditClick = (event, product) => {
     event.preventDefault();
-    setEditProductsId(products.id);
+    setEditProductsId(product.id);
 
     const formValues = {
-      title: products.title,
-      description: products.description,
-      price: products.price,
+      title: product.title,
+      description: product.description,
+      price: product.price,
       // email: contact.email,
     };
 
@@ -167,20 +176,25 @@ export default function BasicTabs() {
     setEditProductsId(null);
   };
 
-  const handleDeleteClick = (productsproductsId) => {
-    const newProducts = [...products];
+  // const newData={}
 
-    const index = products.findIndex(
-      (products) => products.id === editProductsId
-    );
-
-    newProducts.splice(index, 1);
-
-    setProducts(newProducts);
+  const deleteProducts = async (productId) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:3001/products/${productId}`
+      );
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
   };
   const postProducts = async () => {
     try {
-      const res = await axios.post(`http://localhost:3001/products`);
+      const res = await axios.post(
+        `http://localhost:3001/products`,
+        addFormData
+      );
+      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -282,7 +296,7 @@ export default function BasicTabs() {
             variant="outlined"
             type="submit"
             sx={{ mr: "10px" }}
-            onClick={handleOpen}
+            onClick={(handleOpen, postProducts)}
           >
             ذخیره
           </Button>
@@ -315,9 +329,9 @@ export default function BasicTabs() {
             {/* </tr>tdWidth */}
           </TableHead>
           <tbody>
-            {products.map((products) => (
+            {products.map((product) => (
               <Fragment>
-                {editProductsId === products.id ? (
+                {editProductsId === product.id ? (
                   <EditableRow
                     editFormData={editFormData}
                     handleEditFormChange={handleEditFormChange}
@@ -325,9 +339,9 @@ export default function BasicTabs() {
                   />
                 ) : (
                   <ReadOnlyRow
-                    products={products}
+                    product={product}
                     handleEditClick={handleEditClick}
-                    handleDeleteClick={handleDeleteClick}
+                    handleDeleteClick={deleteProducts}
                   />
                 )}
               </Fragment>

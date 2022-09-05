@@ -19,6 +19,7 @@ export default function MyRoutes() {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="/category/:category" element={<Category />} />
+        <Route path="/product/:id" element={<PDP />} />
 
         {/* <Route path="PDP" element={<PDP />} /> */}
       </Route>
