@@ -19,6 +19,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Link, Link as RouterLink } from "react-router-dom";
 import { BasicModal } from "components";
+import { useGetAllProductsQuery } from "../../features/productAPI";
 const Line = { textDecoration: "none" };
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -89,7 +90,11 @@ export default function BasicTabs() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  //////////////////////////////////////////////////
 
+  const { data, error, isLoading } = useGetAllProductsQuery();
+
+  /////////////////////////////////////////////////////
   return (
     <Box sx={{ width: "100%", padding: "30px" }}>
       <Box sx={{ width: "100", padding: "30px", display: "flex" }}>
