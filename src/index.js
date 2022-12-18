@@ -13,10 +13,12 @@ import { productsApi } from "./features/productAPI";
 import { createTheme } from "@mui/material/styles";
 // import { grey, red } from "@mui/material/colors";
 import { red } from "@mui/material/colors";
+import cartReducer from "features/cartSlice";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore({
   reducer: {
     products: productsReducer,
+    cart:cartReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware )=>{

@@ -37,7 +37,13 @@ const ReadOnlyRow = ({ product, handleEditClick, handleDeleteClick }) => {
         >
           به روز
         </Button>
-   
+        <Button
+          variant="contained"
+          type="button"
+          onClick={() => handleDeleteClick(product.id)}
+        >
+          حذف
+        </Button>
       </TableCell>
     </TableRow>
   );

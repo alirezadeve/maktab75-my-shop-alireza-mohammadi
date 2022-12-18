@@ -20,6 +20,9 @@ import { useEffect } from "react";
 import { Link, Link as RouterLink } from "react-router-dom";
 import { BasicModal } from "components";
 import { useGetAllProductsQuery } from "../../features/productAPI";
+import { useDispatch } from "react-redux";
+import { addToCart } from "features/cartSlice";
+import { useNavigate } from "react-router-dom";
 const Line = { textDecoration: "none" };
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -93,6 +96,12 @@ export default function BasicTabs() {
   //////////////////////////////////////////////////
 
   const { data, error, isLoading } = useGetAllProductsQuery();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    navigate(`/cart`);
+  };
 
   /////////////////////////////////////////////////////
   return (
@@ -156,6 +165,7 @@ export default function BasicTabs() {
                 >
                   جزئیات
                 </Button>
+                <Button onClick={() => handleAddToCart(laptops)}>Add</Button>
               </CardActions>
             </Card>
           ))}
@@ -218,6 +228,9 @@ export default function BasicTabs() {
                   to={`/product/${smartphones.id}`}
                 >
                   جزئیات
+                </Button>
+                <Button onClick={() => handleAddToCart(smartphones)}>
+                  Add
                 </Button>
               </CardActions>
             </Card>
@@ -282,6 +295,7 @@ export default function BasicTabs() {
                 >
                   جزئیات
                 </Button>
+                <Button onClick={() => handleAddToCart(fragrances)}>Add</Button>
               </CardActions>
             </Card>
           ))}
@@ -345,6 +359,7 @@ export default function BasicTabs() {
                 >
                   Primary
                 </Button>
+                <Button onClick={() => handleAddToCart(skincare)}>Add</Button>
               </CardActions>
             </Card>
           ))}
@@ -408,6 +423,7 @@ export default function BasicTabs() {
                 >
                   جزئیات
                 </Button>
+                <Button onClick={() => handleAddToCart(groceries)}>Add</Button>
               </CardActions>
             </Card>
           ))}
@@ -471,6 +487,9 @@ export default function BasicTabs() {
                 >
                   جزئیات
                 </Button>
+                <Button onClick={() => handleAddToCart(homeDecoration)}>
+                  Add
+                </Button>
               </CardActions>
             </Card>
           ))}
@@ -478,4 +497,3 @@ export default function BasicTabs() {
     </Box>
   );
 }
-// beram to menoo bd to onclikesh filteraro benevisam bad yejoor be car dam pas bedam render konam

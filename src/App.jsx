@@ -21,6 +21,7 @@ import MyRoutes from "Routes";
 import RtlLayout from "theme/RtlLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import { GlobalStyles, CssBaseline } from "@mui/material";
+import { ToastContainer } from "react-toastify";
 
 import theme from "./theme/theme";
 // import "../../assets/styles/components/headerCounter/headerCounter.scss";
@@ -54,6 +55,7 @@ function App() {
       <ActionAreaCard handleModalOpen={handleModalOpen} />
       <BasicModal modalOpen={modalOpen} handleModalClose={handleModalClose} />  */}
           <MyRoutes />
+          {/* <ToastContainer /> */}
         </div>
       </ThemeProvider>
     </RtlLayout>

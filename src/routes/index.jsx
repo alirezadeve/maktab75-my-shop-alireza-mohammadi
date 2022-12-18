@@ -1,4 +1,5 @@
 import { Login } from "components";
+import Cart from "components/Card/Card.components";
 import BasicTabs from "components/Tabs/Tabs";
 import AdminLayout from "layouts/adminLayout";
 import HomeLayout from "layouts/homeLayout";
@@ -20,6 +21,7 @@ export default function MyRoutes() {
         <Route path="login" element={<Login />} />
         <Route path="/category/:category" element={<Category />} />
         <Route path="/product/:id" element={<PDP />} />
+        <Route path="/cart" element={<Cart />} />
 
         {/* <Route path="PDP" element={<PDP />} /> */}
       </Route>
